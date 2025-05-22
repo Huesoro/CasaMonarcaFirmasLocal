@@ -11,7 +11,7 @@ def insert_user(user_data):
     """
     try:
         # Conectar a la base de datos
-        conn = sqlite3.connect('Usuarios.db')
+        conn = sqlite3.connect('Azure_SQL/Usuarios.db')
         cursor = conn.cursor()
         
         # Preparar la consulta SQL
@@ -45,7 +45,7 @@ def insert_doc(doc_data):
     """
     try:
         # Conectar a la base de datos
-        conn = sqlite3.connect('Documentos.db')
+        conn = sqlite3.connect('Azure_SQL/Documentos.db')
         cursor = conn.cursor()
         
         # Preparar la consulta SQL
@@ -77,12 +77,12 @@ def insert_donacion_dinero(don_data):
         don_data (dict): Diccionario con los datos de la donación
     """
     try:
-        conn = sqlite3.connect('DonacionesDinero.db')
+        conn = sqlite3.connect('Azure_SQL/DonacionesDinero.db')
         cursor = conn.cursor()
         insert_query = """
         INSERT INTO donacionesdinero (amount, user_id, created_at, updated_at, doc_id)
         VALUES (:amount, :user_id, :created_at, :updated_at, :doc_id)
-        """
+        """ 
         cursor.execute(insert_query, don_data)
         conn.commit()
         print("Donación de dinero insertada exitosamente")
@@ -100,7 +100,7 @@ def insert_donacion_insumos(insumo_data):
         insumo_data (dict): Diccionario con los datos de la donación de insumos
     """
     try:
-        conn = sqlite3.connect('DonacionesInsumos.db')
+        conn = sqlite3.connect('Azure_SQL/DonacionesInsumos.db')
         cursor = conn.cursor()
         insert_query = """
         INSERT INTO donacionesinsumos (amount, objeto, user_id, created_at, updated_at, doc_id)

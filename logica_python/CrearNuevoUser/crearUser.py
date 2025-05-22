@@ -1,6 +1,6 @@
 import hashlib
 import datetime as dt
-import crearCertificado
+from CrearCertificados.crearCertificado import crear_certificado_usuario
 
 from Azure_SQL.conectBases import insert_user
 

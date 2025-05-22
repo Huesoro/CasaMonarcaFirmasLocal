@@ -1,0 +1,4 @@
+python-docx
+pyhanko 
+
+## Para instalar necesitas usar pip install -r requirements.txt
