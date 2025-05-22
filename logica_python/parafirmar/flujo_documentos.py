@@ -2,12 +2,6 @@ import sqlite3
 import os
 from docx import Document
 from docx.shared import Inches
-from CrearCertificados.crearCertificado import crear_certificado_usuario
-from pyhanko.sign import signers
-from pyhanko.sign.fields import SigFieldSpec
-from pyhanko.sign.general import load_cert_from_pemder, load_private_key_from_pemder
-from docx2pdf import convert
-import tempfile
 
 # 1. Buscar usuario por correo en la base de datos
 
@@ -76,59 +70,37 @@ def firmar_documento_word(ruta_docx, ruta_firma, nombre, rol, placeholder_nombre
     else:
         print("No se encontró el marcador para firmar en el documento.")
 
-def firmar_digitalmente_pdf(pdf_path, cert_path, key_path, output_path, password):
-    with open(cert_path, 'rb') as f:
-        cert = load_cert_from_pemder(f.read())
-    with open(key_path, 'rb') as f:
-        key = load_private_key_from_pemder(f.read(), password.encode())
-    signer = signers.SimpleSigner(
-        signing_cert=cert,
-        signing_key=key,
-        cert_registry=signers.SimpleCertificateStore()
-    )
-    with open(pdf_path, 'rb') as inf, open(output_path, 'wb') as outf:
-        signers.sign_pdf(
-            inf,
-            signers.PdfSignatureMetadata(field_name='FirmaDigital'),
-            signer=signer,
-            output=outf
-        )
-
 # 4. Flujo principal de ejemplo
 
-def flujo_documento(correo, doc_id, password_firma, placeholder_nombre="{nombre_inventario}", rol=None):
+def flujo_documento(correo, doc_id, placeholder_nombre="{nombre_inventario}", rol=None):
     usuario = buscar_usuario_por_correo(correo)
     if not usuario:
-        return {"status": "error", "message": "Usuario no encontrado"}
+        print("Usuario no encontrado")
+        return
+    print("Usuario:", usuario)
 
     documento = buscar_documento_por_id(doc_id)
     if not documento:
-        return {"status": "error", "message": "Documento no encontrado"}
+        print("Documento no encontrado")
+        return
+    print("Documento:", documento)
 
     try:
         ruta_archivo = buscar_archivo_sharepoint(documento['sharepoint_url'])
+        print("Ruta física del archivo:", ruta_archivo)
     except FileNotFoundError as e:
-        return {"status": "error", "message": str(e)}
+        print(e)
+        return
 
     try:
         ruta_firma = buscar_firma_por_correo(correo)
+        print("Ruta de la firma:", ruta_firma)
     except FileNotFoundError as e:
-        return {"status": "error", "message": str(e)}
+        print(e)
+        return
 
+    # Usar el rol del usuario si no se pasa explícitamente
     rol_firma = rol if rol else usuario['role'] if usuario['role'] else "Personal autorizado"
+    # Firmar el documento Word
     firmar_documento_word(ruta_archivo, ruta_firma, usuario['name'], rol_firma, placeholder_nombre)
 
-    cert_path, key_path = crear_certificado_usuario(usuario['user_id'], usuario['name'], password_firma)
-
-    with tempfile.TemporaryDirectory() as tmpdir:
-        pdf_path = os.path.join(tmpdir, 'documento.pdf')
-        convert(ruta_archivo, pdf_path)
-        output_pdf = ruta_archivo.replace('.docx', '_firmado.pdf')
-        firmar_digitalmente_pdf(pdf_path, cert_path, key_path, output_pdf, password_firma)
-        return {
-            "status": "success",
-            "message": "Documento PDF firmado digitalmente guardado.",
-            "output_pdf": output_pdf,
-            "usuario": usuario,
-            "documento": documento
-        }

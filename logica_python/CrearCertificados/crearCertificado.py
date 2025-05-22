@@ -5,7 +5,6 @@ from pyhanko_certvalidator import ValidationContext
 from pyhanko.sign import SimpleSigner, signers
 from pyhanko_certgen import generate_self_signed
 from pyhanko.sign.fields import SigFieldSpec
-from cryptography.hazmat.primitives import serialization
 
 def crear_certificado_usuario(email, nombre, password, carpeta_certs="certs"):
     """
@@ -21,9 +20,5 @@ def crear_certificado_usuario(email, nombre, password, carpeta_certs="certs"):
     with open(cert_path, "wb") as f:
         f.write(cert.dump())
     with open(key_path, "wb") as f:
-        f.write(key.key.private_bytes(
-            encoding=serialization.Encoding.PEM,
-            format=serialization.PrivateFormat.PKCS8,
-            encryption_algorithm=serialization.BestAvailableEncryption(password.encode())
-        ))
+        f.write(key.dump())
     return cert_path, key_path
