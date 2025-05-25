@@ -1,7 +1,7 @@
 import os
 import uuid
 from datetime import datetime
-from Azure_SQL.conectBases import insert_doc, insert_donacion_dinero, insert_donacion_insumos
+from Azure_SQL.conectBases import insert_doc, insert_donacion_dinero, insert_donacion_insumos, insertar_flujo_firmas
 from docx import Document
 
 
@@ -71,7 +71,7 @@ def crear_donacion(datos, user_id):
         "title": f"Donación {tipo_donacion} {id_documento}",
         "sharepoint_url": path_docx,
         "Type": tipo_donacion,
-        "status": "creado",
+        "status": "pending",
         "user_id": user_id,
         "created_at": fecha_hoy,
         "updated_at": fecha_hoy
@@ -98,6 +98,9 @@ def crear_donacion(datos, user_id):
             "doc_id": id_documento
         }
         insert_donacion_insumos(insumo_data)
+
+    # 6. Insertar el flujo de firmas
+    insertar_flujo_firmas(id_documento, user_id, tipo_donacion)
 
     return {
         "status": "success",

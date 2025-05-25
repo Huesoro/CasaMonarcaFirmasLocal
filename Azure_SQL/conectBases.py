@@ -207,9 +207,11 @@ def insertar_flujo_firmas(doc_id, creador_id, tipo_donacion):
     conn = sqlite3.connect('Azure_SQL/Firmas.db')
     cursor = conn.cursor()
     now = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    conn2 = sqlite3.connect('Azure_SQL/Usuarios.db')
+    cursor2 = conn2.cursor()
     # 1. Creador
-    cursor.execute("SELECT role FROM usuarios WHERE user_id = ?", (creador_id,))
-    rol_creador = cursor.fetchone()[0]
+    cursor2.execute("SELECT role FROM usuarios WHERE user_id = ?", (creador_id,))
+    rol_creador = cursor2.fetchone()[0]
     pasos.append((doc_id, creador_id, rol_creador, None, "pendiente", 1, None))
     # 2. Segundo firmante
     if tipo_donacion == "especie":
@@ -222,7 +224,7 @@ def insertar_flujo_firmas(doc_id, creador_id, tipo_donacion):
     # Insertar pasos
     for p in pasos:
         cursor.execute("""
-            INSERT INTO firmas_documento (doc_id, user_id, rol, fecha_firma, status, orden, comentario)
+            INSERT INTO firmas_documento (doc_id, user_id, role, fecha_firma, status, orden, comentario)
             VALUES (?, ?, ?, ?, ?, ?, ?)
         """, p)
     conn.commit()
@@ -234,7 +236,7 @@ def get_documentos_para_firmar(user_id, rol):
     # Solo los pasos pendientes y que le tocan al usuario/rol
     cursor.execute("""
         SELECT doc_id FROM firmas_documento
-        WHERE status = 'pendiente' AND (user_id = ? OR rol = ?)
+        WHERE status = 'pendiente' AND (user_id = ? OR role = ?)
         ORDER BY orden ASC
     """, (user_id, rol))
     docs = [row[0] for row in cursor.fetchall()]
@@ -247,11 +249,10 @@ def firmar_documento(doc_id, user_id, rol):
     now = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     # Marcar como firmado el paso correspondiente
     cursor.execute("""
-        UPDATE firmas_documento
-        SET status = 'firmado', fecha_firma = ?
-        WHERE doc_id = ? AND status = 'pendiente' AND (user_id = ? OR rol = ?)
-        ORDER BY orden ASC LIMIT 1
-    """, (now, doc_id, user_id, rol))
+    SELECT orden FROM firmas_documento
+    WHERE doc_id = ? AND status = 'pendiente' AND (user_id = ? OR role = ?)
+    ORDER BY orden ASC LIMIT 1
+""", (now, doc_id, user_id))
     conn.commit()
     # Si ya no hay pasos pendientes, marcar documento como firmado
     cursor.execute("""

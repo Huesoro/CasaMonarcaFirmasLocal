@@ -65,11 +65,11 @@ export default function NewDonation() {
       })
       const result = await res.json()
       if (result.status === "success") {
-        toast({
-          title: "Donación registrada",
-          description: "El documento ha sido generado y está pendiente de firma.",
-        })
-        router.push("/documents")
+      toast({
+        title: "Donación registrada",
+        description: "El documento ha sido generado y está pendiente de firma.",
+      })
+      router.push("/documents")
       } else {
         toast({
           title: "Error",
@@ -138,25 +138,25 @@ export default function NewDonation() {
 
               {/* Solo mostrar el formulario de insumos si es recepción */}
               {isReception && (
-                <TabsContent value="supplies" className="space-y-4 pt-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="supplies-description">Descripción de Insumos</Label>
-                    <Textarea
-                      id="supplies-description"
-                      placeholder="Detalle los insumos donados"
-                      className="min-h-[100px]"
-                      required
+              <TabsContent value="supplies" className="space-y-4 pt-4">
+                <div className="space-y-2">
+                  <Label htmlFor="supplies-description">Descripción de Insumos</Label>
+                  <Textarea
+                    id="supplies-description"
+                    placeholder="Detalle los insumos donados"
+                    className="min-h-[100px]"
+                    required
                       ref={suppliesDescriptionRef}
-                    />
-                  </div>
+                  />
+                </div>
 
-                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                    <div className="space-y-2">
-                      <Label htmlFor="quantity">Cantidad</Label>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label htmlFor="quantity">Cantidad</Label>
                       <Input id="quantity" type="number" min="1" placeholder="1" required ref={quantityRef} />
-                    </div>
                   </div>
-                </TabsContent>
+                </div>
+              </TabsContent>
               )}
             </CardContent>
             <CardFooter className="flex justify-between">

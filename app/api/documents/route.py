@@ -10,4 +10,4 @@ router = APIRouter()
 @router.get("/documents")
 def get_documents():
     documentos = get_all_documents()
-    return JSONResponse(content=documentos) 
+    return JSONResponse(content={"documentos": documentos}) 

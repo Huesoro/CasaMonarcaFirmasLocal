@@ -133,7 +133,7 @@ async def api_firmar_documento(request: Request):
     data = await request.json()
     doc_id = data.get("doc_id")
     user_id = data.get("user_id")
-    rol = data.get("rol")
+    rol = data.get("role")
     firmar_documento(doc_id, user_id, rol)
     return {"status": "success", "message": "Documento firmado"}
 
@@ -142,20 +142,25 @@ async def api_documentos_pendientes(user_id: int, rol: str):
     doc_ids = get_documentos_para_firmar(user_id, rol)
     if not doc_ids:
         return {"documentos": []}
-    # Obtener los documentos completos
     placeholders = ','.join(['?'] * len(doc_ids))
     conn = sqlite3.connect('Azure_SQL/Documentos.db')
     cursor = conn.cursor()
     query = f"""
-        SELECT d.doc_id, d.title, d.sharepoint_url, d.Type, d.status, d.user_id, d.created_at, d.updated_at, u.name
+        SELECT d.doc_id, d.title, d.sharepoint_url, d.Type, d.status, d.user_id, d.created_at, d.updated_at
         FROM documentos d
-        LEFT JOIN ../Usuarios.db.u u ON d.user_id = u.user_id
         WHERE d.doc_id IN ({placeholders})
     """
     cursor.execute(query, doc_ids)
     rows = cursor.fetchall()
     documentos = []
+    # Abre la otra base para obtener los nombres de usuario
+    conn_users = sqlite3.connect('Azure_SQL/Usuarios.db')
+    cursor_users = conn_users.cursor()
     for row in rows:
+        user_id = row[5]
+        cursor_users.execute("SELECT name FROM usuarios WHERE user_id = ?", (user_id,))
+        user_row = cursor_users.fetchone()
+        creador_nombre = user_row[0] if user_row else "Desconocido"
         documentos.append({
             "doc_id": row[0],
             "title": row[1],
@@ -165,9 +170,10 @@ async def api_documentos_pendientes(user_id: int, rol: str):
             "user_id": row[5],
             "created_at": row[6],
             "updated_at": row[7],
-            "creador_nombre": row[8]
+            "creador_nombre": creador_nombre
         })
     conn.close()
+    conn_users.close()
     return {"documentos": documentos}
 
 @app.get("/api/documentos/firmas/{doc_id}")

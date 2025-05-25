@@ -4,5 +4,6 @@ fastapi
 uvicorn
 pyHanko
 docx2pdf
+python-multipart
 cryptography
 ## Para instalar necesitas usar pip install -r requirements.txt

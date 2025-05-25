@@ -45,12 +45,18 @@ export default function Documents() {
     try {
       let docs = []
       if (tab === "pending" && user) {
-        const res = await fetch(`/api/documentos/pendientes?user_id=${user.user_id}&rol=${user.role}`)
+        const res = await fetch(`http://localhost:8000/api/documentos/pendientes?user_id=${user.user_id}&rol=${user.role}`)
         const data = await res.json()
         docs = data.documentos || []
-      } else {
-        const res = await fetch("/api/documents")
-        docs = await res.json()
+      } else if (tab === "all") {
+        const res = await fetch("http://localhost:8000/api/historial-donaciones")
+        const data = await res.json()
+        docs = data.donaciones || []
+      } else if (user) {
+        // Para firmados y rechazados, filtra los documentos pendientes por status
+        const res = await fetch(`http://localhost:8000/api/documentos/pendientes?user_id=${user.user_id}&rol=${user.role}`)
+        const data = await res.json()
+        docs = (data.documentos || []).filter(doc => doc.status === tab)
       }
       setDocuments(docs)
     } catch {
@@ -69,7 +75,7 @@ export default function Documents() {
   useEffect(() => {
     if (user?.role === "admin" && selectedDocument) {
       setLoadingFirmas(true)
-      fetch(`/api/documentos/firmas/${selectedDocument.doc_id}`)
+      fetch(`http://localhost:8000/api/documentos/firmas/${selectedDocument.doc_id}`)
         .then(res => res.json())
         .then(data => setFirmas(data.firmas || []))
         .finally(() => setLoadingFirmas(false))
@@ -98,7 +104,7 @@ export default function Documents() {
     if (!password) return
     setIsSigning(true)
     try {
-      const res = await fetch("/api/documentos/firmar", {
+      const res = await fetch("http://localhost:8000/api/documentos/firmar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -178,7 +184,7 @@ export default function Documents() {
           ) : (
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {filteredDocuments.map((doc) => (
-                <Card key={doc.doc_id} className="overflow-hidden">
+                <Card key={doc.doc_id ?? doc.id} className="overflow-hidden">
                   <CardHeader className="pb-3">
                     <div className="flex items-start justify-between">
                       <CardTitle className="text-lg font-medium">{doc.title}</CardTitle>
@@ -188,7 +194,9 @@ export default function Documents() {
                   </CardHeader>
                   <CardContent className="pb-3">
                     <div className="flex items-center justify-between text-sm">
-                      <span>Fecha: {new Date(doc.created_at).toLocaleDateString()}</span>
+                      <span>
+                        Fecha: {new Date(doc.created_at ?? doc.date).toLocaleDateString()}
+                      </span>
                       <span className="capitalize">Tipo: {doc.Type === "dinero" ? "Dinero" : "Insumos"}</span>
                     </div>
                   </CardContent>
