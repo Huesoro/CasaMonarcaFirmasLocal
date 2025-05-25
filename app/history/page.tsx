@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useAuth } from "@/hooks/use-auth"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -12,106 +12,40 @@ import { Search, Download, FileText, Filter } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
-// Mock data for donation history
-const mockDonations = [
-  {
-    id: "don-001",
-    title: "Donación de Alimentos - Fundación Ayuda",
-    type: "supplies",
-    date: "2023-05-15",
-    status: "completed",
-    amount: null,
-    items: "50 kg de alimentos no perecederos",
-    donor: "Fundación Ayuda",
-  },
-  {
-    id: "don-002",
-    title: "Donación Monetaria - Empresa XYZ",
-    type: "money",
-    date: "2023-05-10",
-    status: "completed",
-    amount: 15000,
-    items: null,
-    donor: "Empresa XYZ",
-  },
-  {
-    id: "don-003",
-    title: "Donación de Medicamentos - Farmacia ABC",
-    type: "supplies",
-    date: "2023-05-05",
-    status: "completed",
-    amount: null,
-    items: "Medicamentos varios",
-    donor: "Farmacia ABC",
-  },
-  {
-    id: "don-004",
-    title: "Donación Monetaria - Donante Anónimo",
-    type: "money",
-    date: "2023-04-28",
-    status: "completed",
-    amount: 5000,
-    items: null,
-    donor: "Anónimo",
-  },
-  {
-    id: "don-005",
-    title: "Donación de Ropa - Tienda de Ropa XYZ",
-    type: "supplies",
-    date: "2023-04-20",
-    status: "completed",
-    amount: null,
-    items: "100 prendas de vestir",
-    donor: "Tienda de Ropa XYZ",
-  },
-  {
-    id: "don-006",
-    title: "Donación Monetaria - Empresa ABC",
-    type: "money",
-    date: "2023-04-15",
-    status: "completed",
-    amount: 20000,
-    items: null,
-    donor: "Empresa ABC",
-  },
-  {
-    id: "don-007",
-    title: "Donación de Útiles Escolares - Papelería XYZ",
-    type: "supplies",
-    date: "2023-04-10",
-    status: "completed",
-    amount: null,
-    items: "Útiles escolares para 50 niños",
-    donor: "Papelería XYZ",
-  },
-  {
-    id: "don-008",
-    title: "Donación Monetaria - Fundación ABC",
-    type: "money",
-    date: "2023-04-05",
-    status: "completed",
-    amount: 10000,
-    items: null,
-    donor: "Fundación ABC",
-  },
-]
-
 export default function History() {
   const { user } = useAuth()
   const [searchTerm, setSearchTerm] = useState("")
   const [typeFilter, setTypeFilter] = useState("all")
   const [selectedDonation, setSelectedDonation] = useState<any>(null)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [donations, setDonations] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchDonations() {
+      setLoading(true)
+      try {
+        const res = await fetch("/api/historial-donaciones")
+        const data = await res.json()
+        setDonations(data.donaciones || [])
+      } catch (e) {
+        setDonations([])
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchDonations()
+  }, [])
 
   if (!user) {
     return <div>Cargando...</div>
   }
 
-  // Filter donations based on search term and type filter
-  const filteredDonations = mockDonations.filter((donation) => {
+  // Filtrar donaciones según búsqueda y tipo
+  const filteredDonations = donations.filter((donation) => {
     const matchesSearch =
       donation.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      donation.donor.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (donation.donor && donation.donor.toLowerCase().includes(searchTerm.toLowerCase())) ||
       (donation.items && donation.items.toLowerCase().includes(searchTerm.toLowerCase()))
 
     const matchesType = typeFilter === "all" || donation.type === typeFilter
@@ -170,7 +104,13 @@ export default function History() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {filteredDonations.length === 0 ? (
+                {loading ? (
+                  <TableRow>
+                    <TableCell colSpan={6} className="h-24 text-center">
+                      Cargando donaciones...
+                    </TableCell>
+                  </TableRow>
+                ) : filteredDonations.length === 0 ? (
                   <TableRow>
                     <TableCell colSpan={6} className="h-24 text-center">
                       No se encontraron donaciones
@@ -188,7 +128,9 @@ export default function History() {
                         </Badge>
                       </TableCell>
                       <TableCell>
-                        {donation.type === "money" ? `$${donation.amount?.toLocaleString()} MXN` : donation.items}
+                        {donation.type === "money"
+                          ? `$${donation.amount?.toLocaleString()} MXN`
+                          : donation.items}
                       </TableCell>
                       <TableCell className="text-right">
                         <DropdownMenu>

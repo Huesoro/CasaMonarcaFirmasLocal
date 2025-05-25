@@ -67,8 +67,9 @@ def crear_donacion(datos, user_id):
 
     # 4. Registrar el documento en la base de datos
     doc_data = {
+        "doc_id": id_documento,
         "title": f"Donación {tipo_donacion} {id_documento}",
-        "sharepoint_url": path_docx,  # O la ruta relativa que uses en SharePoint
+        "sharepoint_url": path_docx,
         "Type": tipo_donacion,
         "status": "creado",
         "user_id": user_id,

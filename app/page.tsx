@@ -1,9 +1,40 @@
+"use client"
+
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useAuth } from "@/hooks/use-auth"
 
 export default function Home() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+  const router = useRouter()
+  const { login } = useAuth()
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setError("")
+    setLoading(true)
+    const res = await fetch("http://localhost:8000/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    })
+    const data = await res.json()
+    setLoading(false)
+    if (data.status === "success") {
+      login(data.user)
+      router.push("/dashboard")
+    } else {
+      setError(data.message || "Error al iniciar sesión")
+    }
+  }
+
   return (
     <div className="container mx-auto px-4 py-10">
       <div className="flex flex-col items-center justify-center space-y-8 text-center">
@@ -24,14 +55,37 @@ export default function Home() {
               <Card>
                 <CardHeader>
                   <CardTitle>Iniciar Sesión</CardTitle>
-                  <CardDescription>Accede a la plataforma utilizando tu cuenta corporativa</CardDescription>
+                  <CardDescription>Accede a la plataforma utilizando tu cuenta</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex justify-center">
+                  <form onSubmit={handleLogin} className="space-y-4">
+                    <input
+                      type="email"
+                      placeholder="Correo electrónico"
+                      value={email}
+                      onChange={e => setEmail(e.target.value)}
+                      required
+                      className="w-full border rounded px-3 py-2"
+                    />
+                    <input
+                      type="password"
+                      placeholder="Contraseña"
+                      value={password}
+                      onChange={e => setPassword(e.target.value)}
+                      required
+                      className="w-full border rounded px-3 py-2"
+                    />
+                    {error && <div className="text-red-500">{error}</div>}
+                    <Button type="submit" size="lg" disabled={loading}>
+                      {loading ? "Ingresando..." : "Iniciar sesión"}
+                    </Button>
+                  </form>
+                  {/* Si quieres dejar el login de Microsoft como opción alternativa, puedes dejar el botón abajo */}
+                  {/* <div className="flex justify-center">
                     <Button asChild size="lg">
                       <Link href="/api/auth/login">Iniciar sesión con Microsoft</Link>
                     </Button>
-                  </div>
+                  </div> */}
                 </CardContent>
               </Card>
             </TabsContent>

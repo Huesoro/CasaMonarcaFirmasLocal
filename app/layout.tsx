@@ -1,7 +1,7 @@
 import type React from "react"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
-import { AuthProvider } from "@/components/auth-provider"
+import { AuthProvider } from "@/hooks/use-auth"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import "./globals.css"

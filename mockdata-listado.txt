@@ -1,0 +1,11 @@
+MOCK DATA GENERADA:
+
+Usuario: Sofía García (sofia.garcia@casamonarca.org) - Rol: admin
+Usuario: Carlos Méndez (carlos.mendez@casamonarca.org) - Rol: finance
+Usuario: Lucía Pérez (lucia.perez@casamonarca.org) - Rol: reception
+Usuario: Juan Ríos (juan.rios@casamonarca.org) - Rol: legal
+Usuario: Mariana López (mariana.lopez@casamonarca.org) - Rol: inventory
+Donación especie: {'{fecha_donacion}': '2025-05-25 14:46:29', '{nombre_donante}': 'Grupo Voluntario Monterrey', '{lista_articulos}': 'Ropa de abrigo, zapatos, mochilas'} (registrada por user_id 8)
+Donación especie: {'{fecha_donacion}': '2025-05-25 14:46:29', '{nombre_donante}': 'Farmacia San Pablo', '{lista_articulos}': 'Medicamentos para gripe, termómetros'} (registrada por user_id 10)
+Donación dinero: {'{fecha_donacion}': '2025-05-25 14:46:29', '{nombre_donante}': 'Empresa ABC S.A.', '{monto_donado}': 25000} (registrada por user_id 7)
+Donación dinero: {'{fecha_donacion}': '2025-05-25 14:46:29', '{nombre_donante}': 'Donador Privado', '{monto_donado}': 5000} (registrada por user_id 7)

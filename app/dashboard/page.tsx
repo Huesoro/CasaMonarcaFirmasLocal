@@ -4,10 +4,10 @@ import { useAuth } from "@/hooks/use-auth"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { FileText, DollarSign, History, FileSignature } from "lucide-react"
+import { FileText, DollarSign, History, FileSignature, User } from "lucide-react"
 
 export default function Dashboard() {
-  const { user } = useAuth()
+  const { user, logout } = useAuth()
 
   // Define dashboard cards based on user role
   const getDashboardCards = () => {
@@ -17,7 +17,7 @@ export default function Dashboard() {
         description: "Crear un nuevo registro de donación",
         icon: <FileText className="h-6 w-6" />,
         href: "/donations/new",
-        roles: ["finance", "reception", "admin"],
+        roles: ["finance", "reception"],
       },
       {
         title: "Documentos Pendientes",
@@ -39,6 +39,13 @@ export default function Dashboard() {
         icon: <DollarSign className="h-6 w-6" />,
         href: "/reports",
         roles: ["executive", "finance", "admin"],
+      },
+      {
+        title: "Gestión de Usuarios",
+        description: "Crear y administrar usuarios del sistema",
+        icon: <User className="h-6 w-6" />,
+        href: "/users/new",
+        roles: ["admin"],
       },
     ]
 
@@ -73,6 +80,8 @@ export default function Dashboard() {
           </Card>
         ))}
       </div>
+
+      <Button onClick={logout} className="mt-4 w-full">Cerrar sesión</Button>
     </div>
   )
 }

@@ -2,7 +2,7 @@ import sqlite3
 import os
 from docx import Document
 from docx.shared import Inches
-from CrearCertificados.crearCertificado import crear_certificado_usuario
+from logica_python.CrearCertificados.crearCertificado import crear_certificado_usuario
 from pyhanko.sign import signers
 from pyhanko.sign.fields import SigFieldSpec
 from pyhanko.sign.general import load_cert_from_pemder, load_private_key_from_pemder
@@ -12,7 +12,7 @@ import tempfile
 # 1. Buscar usuario por correo en la base de datos
 
 def buscar_usuario_por_correo(correo):
-    conn = sqlite3.connect('../../Azure SQL/Usuarios.db')
+    conn = sqlite3.connect('Azure SQL/Usuarios.db')
     cursor = conn.cursor()
     cursor.execute("SELECT user_id, name, role FROM usuarios WHERE email = ?", (correo,))
     resultado = cursor.fetchone()
@@ -25,7 +25,7 @@ def buscar_usuario_por_correo(correo):
 # 2. Buscar documento por id en la base de datos
 
 def buscar_documento_por_id(doc_id):
-    conn = sqlite3.connect('../../Azure SQL/Documentos.db')
+    conn = sqlite3.connect('Azure_SQL/Documentos.db')
     cursor = conn.cursor()
     cursor.execute("SELECT doc_id, title, sharepoint_url FROM documentos WHERE doc_id = ?", (doc_id,))
     resultado = cursor.fetchone()
@@ -38,7 +38,7 @@ def buscar_documento_por_id(doc_id):
 # 3. Buscar archivo físico en la carpeta SharePoint
 
 def buscar_archivo_sharepoint(sharepoint_url):
-    ruta = os.path.join('../../SharePoint', sharepoint_url)
+    ruta = os.path.join('SharePoint', sharepoint_url)
     if os.path.exists(ruta):
         return ruta
     else:

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useAuth } from "@/hooks/use-auth"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -16,41 +16,17 @@ import {
 import { FileText, Download, CheckCircle, Clock, AlertCircle } from "lucide-react"
 import { toast } from "@/components/ui/use-toast"
 
-// Mock data for documents
-const mockDocuments = [
-  {
-    id: "doc-001",
-    title: "Donación de Alimentos - Fundación Ayuda",
-    type: "supplies",
-    date: "2023-05-15",
-    status: "pending",
-    createdBy: "Juan Pérez",
-  },
-  {
-    id: "doc-002",
-    title: "Donación Monetaria - Empresa XYZ",
-    type: "money",
-    date: "2023-05-10",
-    status: "signed",
-    createdBy: "María González",
-  },
-  {
-    id: "doc-003",
-    title: "Donación de Medicamentos - Farmacia ABC",
-    type: "supplies",
-    date: "2023-05-05",
-    status: "pending",
-    createdBy: "Carlos Rodríguez",
-  },
-  {
-    id: "doc-004",
-    title: "Donación Monetaria - Donante Anónimo",
-    type: "money",
-    date: "2023-04-28",
-    status: "rejected",
-    createdBy: "Ana López",
-  },
-]
+// Define el tipo de documento según la base de datos
+interface Documento {
+  doc_id: number
+  title: string
+  sharepoint_url: string
+  Type: string
+  status: string
+  user_id: number
+  created_at: string
+  updated_at: string
+}
 
 export default function Documents() {
   const { user } = useAuth()
@@ -58,36 +34,89 @@ export default function Documents() {
   const [selectedDocument, setSelectedDocument] = useState<any>(null)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [isSigning, setIsSigning] = useState(false)
+  const [documents, setDocuments] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [firmas, setFirmas] = useState<any[]>([])
+  const [loadingFirmas, setLoadingFirmas] = useState(false)
+
+  // Cargar documentos según la pestaña
+  const fetchDocuments = async (tab = activeTab) => {
+    setLoading(true)
+    try {
+      let docs = []
+      if (tab === "pending" && user) {
+        const res = await fetch(`/api/documentos/pendientes?user_id=${user.user_id}&rol=${user.role}`)
+        const data = await res.json()
+        docs = data.documentos || []
+      } else {
+        const res = await fetch("/api/documents")
+        docs = await res.json()
+      }
+      setDocuments(docs)
+    } catch {
+      setDocuments([])
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchDocuments(activeTab)
+    // eslint-disable-next-line
+  }, [activeTab, user])
+
+  // Cargar historial de firmas solo si es admin y hay documento seleccionado
+  useEffect(() => {
+    if (user?.role === "admin" && selectedDocument) {
+      setLoadingFirmas(true)
+      fetch(`/api/documentos/firmas/${selectedDocument.doc_id}`)
+        .then(res => res.json())
+        .then(data => setFirmas(data.firmas || []))
+        .finally(() => setLoadingFirmas(false))
+    } else {
+      setFirmas([])
+    }
+  }, [selectedDocument, user])
 
   if (!user) {
     return <div>Cargando...</div>
   }
 
-  const filteredDocuments = mockDocuments.filter((doc) => {
-    if (activeTab === "all") return true
+  const filteredDocuments = documents.filter((doc) => {
+    if (activeTab === "all") {
+      if (user?.role === "finance") return doc.Type === "dinero"
+      if (user?.role === "inventory") return doc.Type === "especie"
+      return true
+    }
+    if (user?.role === "finance") return doc.Type === "dinero" && doc.status === activeTab
+    if (user?.role === "inventory") return doc.Type === "especie" && doc.status === activeTab
     return doc.status === activeTab
   })
 
-  const handleSignDocument = async () => {
+  const handleSignDocument = async (doc: any) => {
+    const password = prompt("Introduce tu contraseña de firma:")
+    if (!password) return
     setIsSigning(true)
-
     try {
-      // Simulate API call to sign document
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-
-      toast({
-        title: "Documento firmado",
-        description: "El documento ha sido firmado exitosamente.",
+      const res = await fetch("/api/documentos/firmar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          doc_id: doc.doc_id,
+          user_id: user.user_id,
+          rol: user.role,
+        }),
       })
-
-      setIsDialogOpen(false)
-    } catch (error) {
-      console.error("Error al firmar el documento:", error)
-      toast({
-        title: "Error",
-        description: "No se pudo firmar el documento. Intente nuevamente.",
-        variant: "destructive",
-      })
+      const data = await res.json()
+      if (data.status === "success") {
+        toast({ title: "Documento firmado", description: "El documento ha sido firmado exitosamente." })
+        setIsDialogOpen(false)
+        fetchDocuments(activeTab)
+      } else {
+        toast({ title: "Error", description: data.message || "No se pudo firmar el documento.", variant: "destructive" })
+      }
+    } catch (err) {
+      toast({ title: "Error", description: "Error de red al firmar el documento.", variant: "destructive" })
     } finally {
       setIsSigning(false)
     }
@@ -135,7 +164,9 @@ export default function Documents() {
         </TabsList>
 
         <TabsContent value={activeTab} className="space-y-4">
-          {filteredDocuments.length === 0 ? (
+          {loading ? (
+            <div className="text-center py-10">Cargando documentos...</div>
+          ) : filteredDocuments.length === 0 ? (
             <Card>
               <CardContent className="flex flex-col items-center justify-center py-10">
                 <FileText className="mb-4 h-12 w-12 text-muted-foreground" />
@@ -147,18 +178,18 @@ export default function Documents() {
           ) : (
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {filteredDocuments.map((doc) => (
-                <Card key={doc.id} className="overflow-hidden">
+                <Card key={doc.doc_id} className="overflow-hidden">
                   <CardHeader className="pb-3">
                     <div className="flex items-start justify-between">
                       <CardTitle className="text-lg font-medium">{doc.title}</CardTitle>
                       <div>{getStatusIcon(doc.status)}</div>
                     </div>
-                    <CardDescription>Creado por: {doc.createdBy}</CardDescription>
+                    <CardDescription>Creado por: {doc.creador_nombre}</CardDescription>
                   </CardHeader>
                   <CardContent className="pb-3">
                     <div className="flex items-center justify-between text-sm">
-                      <span>Fecha: {new Date(doc.date).toLocaleDateString()}</span>
-                      <span className="capitalize">Tipo: {doc.type === "money" ? "Dinero" : "Insumos"}</span>
+                      <span>Fecha: {new Date(doc.created_at).toLocaleDateString()}</span>
+                      <span className="capitalize">Tipo: {doc.Type === "dinero" ? "Dinero" : "Insumos"}</span>
                     </div>
                   </CardContent>
                   <CardFooter className="flex justify-between pt-0">
@@ -199,79 +230,86 @@ export default function Documents() {
               <DialogHeader>
                 <DialogTitle>{selectedDocument.title}</DialogTitle>
                 <DialogDescription>
-                  Creado por {selectedDocument.createdBy} el {new Date(selectedDocument.date).toLocaleDateString()}
+                  Creado por usuario ID: {selectedDocument.user_id} el {new Date(selectedDocument.created_at).toLocaleDateString()}
                 </DialogDescription>
               </DialogHeader>
 
               <div className="max-h-[60vh] overflow-y-auto rounded-md border p-4">
-                {/* Document preview would go here */}
-                <div className="space-y-4">
-                  <h2 className="text-xl font-bold">Documento de Donación</h2>
-                  <p>
-                    Por medio del presente documento, se hace constar la recepción de una donación
-                    {selectedDocument.type === "money" ? " monetaria " : " de insumos "}
-                    por parte de Casa Monarca, con fecha {new Date(selectedDocument.date).toLocaleDateString()}.
-                  </p>
-
-                  {selectedDocument.type === "money" ? (
-                    <div className="space-y-2">
-                      <p>
-                        <strong>Tipo de donación:</strong> Monetaria
-                      </p>
-                      <p>
-                        <strong>Monto:</strong> $10,000.00 MXN
-                      </p>
-                      <p>
-                        <strong>Método de pago:</strong> Transferencia bancaria
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="space-y-2">
-                      <p>
-                        <strong>Tipo de donación:</strong> Insumos
-                      </p>
-                      <p>
-                        <strong>Descripción:</strong> 50 kg de alimentos no perecederos, 20 cobijas, 10 kits de higiene
-                        personal
-                      </p>
-                      <p>
-                        <strong>Valor estimado:</strong> $8,500.00 MXN
-                      </p>
-                    </div>
-                  )}
-
-                  <p>
-                    Esta donación será utilizada exclusivamente para los fines establecidos por Casa Monarca, en
-                    beneficio de las personas que reciben apoyo de nuestra organización.
-                  </p>
-
-                  <div className="mt-8 space-y-4">
-                    <div className="border-t pt-4">
-                      <p className="text-center">____________________________</p>
-                      <p className="text-center">Firma del Donante</p>
-                    </div>
-
-                    <div className="border-t pt-4">
-                      <p className="text-center">____________________________</p>
-                      <p className="text-center">Firma del Representante de Casa Monarca</p>
-                    </div>
-                  </div>
-                </div>
+                {selectedDocument && (
+                  (() => {
+                    const fileUrl = `/api/documents/download/${selectedDocument.doc_id}`;
+                    const isPDF = selectedDocument.sharepoint_url.toLowerCase().endsWith('.pdf');
+                    const isDocx = selectedDocument.sharepoint_url.toLowerCase().endsWith('.docx');
+                    if (isPDF) {
+                      return (
+                        <iframe
+                          src={fileUrl}
+                          title="Vista previa del documento PDF"
+                          width="100%"
+                          height="500px"
+                          style={{ border: 'none' }}
+                        />
+                      );
+                    } else if (isDocx) {
+                      // Usar Google Docs Viewer para .docx
+                      const googleViewer = `https://docs.google.com/gview?url=${window.location.origin}${fileUrl}&embedded=true`;
+                      return (
+                        <iframe
+                          src={googleViewer}
+                          title="Vista previa del documento Word"
+                          width="100%"
+                          height="500px"
+                          style={{ border: 'none' }}
+                        />
+                      );
+                    } else {
+                      return <div>No se puede previsualizar este tipo de archivo.</div>;
+                    }
+                  })()
+                )}
               </div>
 
               <DialogFooter className="flex items-center justify-between sm:justify-between">
-                <Button variant="outline" className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  className="flex items-center gap-2"
+                  onClick={() => {
+                    if (selectedDocument) {
+                      window.open(`http://localhost:8000/api/documents/download/${selectedDocument.doc_id}`, "_blank");
+                    }
+                  }}
+                >
                   <Download className="h-4 w-4" />
                   Descargar
                 </Button>
-
                 {selectedDocument.status === "pending" && (
-                  <Button onClick={handleSignDocument} disabled={isSigning} className="flex items-center gap-2">
+                  <Button onClick={() => handleSignDocument(selectedDocument)} disabled={isSigning} className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4" />
                     {isSigning ? "Firmando..." : "Firmar Documento"}
                   </Button>
                 )}
               </DialogFooter>
+
+              {user?.role === "admin" && (
+                <div className="mt-6">
+                  <h3 className="font-semibold mb-2">Historial de firmas</h3>
+                  {loadingFirmas ? (
+                    <div>Cargando historial...</div>
+                  ) : (
+                    <ul className="space-y-2">
+                      {firmas.map((f, idx) => (
+                        <li key={idx} className="flex items-center gap-2">
+                          <span className="font-mono text-xs text-gray-500">Paso {f.orden}:</span>
+                          <span className="font-semibold">{f.nombre || <em>Pendiente</em>}</span>
+                          <span className="text-xs">({f.rol})</span>
+                          <span className={`text-xs ${f.status === 'firmado' ? 'text-green-600' : f.status === 'pendiente' ? 'text-yellow-600' : 'text-red-600'}`}>{f.status}</span>
+                          {f.fecha_firma && <span className="text-xs text-gray-400 ml-2">{new Date(f.fecha_firma).toLocaleString()}</span>}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              )}
             </>
           )}
         </DialogContent>

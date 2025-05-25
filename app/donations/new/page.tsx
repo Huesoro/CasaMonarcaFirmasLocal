@@ -32,10 +32,14 @@ export default function NewDonation() {
   const quantityRef = useRef<HTMLInputElement>(null)
 
   // Check if user has permission to access this page
-  if (user && !["finance", "reception", "admin"].includes(user.role)) {
+  if (user && !["finance", "reception"].includes(user.role)) {
     router.push("/dashboard")
     return null
   }
+
+  // Si el usuario es finanzas, solo puede registrar dinero
+  const isFinance = user?.role === "finance"
+  const isReception = user?.role === "reception"
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -53,7 +57,7 @@ export default function NewDonation() {
         datos["{lista_articulos}"] = suppliesDescriptionRef.current?.value
         datos["cantidad"] = quantityRef.current?.value
       }
-      const user_id = user?.id || 1
+      const user_id = user?.user_id || 1
       const res = await fetch("http://localhost:8000/api/crear-donacion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -91,10 +95,11 @@ export default function NewDonation() {
         <p className="text-muted-foreground">Complete el formulario para registrar una nueva donación</p>
       </div>
 
-      <Tabs defaultValue="money" onValueChange={setDonationType}>
+      <Tabs defaultValue="money" onValueChange={setDonationType} value={isFinance ? "money" : donationType}>
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="money">Donación de Dinero</TabsTrigger>
-          <TabsTrigger value="supplies">Donación de Insumos</TabsTrigger>
+          {/* Solo mostrar la pestaña de insumos si es recepción */}
+          {isReception && <TabsTrigger value="supplies">Donación de Insumos</TabsTrigger>}
         </TabsList>
 
         <form onSubmit={handleSubmit}>
@@ -131,25 +136,28 @@ export default function NewDonation() {
                 </div>
               </TabsContent>
 
-              <TabsContent value="supplies" className="space-y-4 pt-4">
-                <div className="space-y-2">
-                  <Label htmlFor="supplies-description">Descripción de Insumos</Label>
-                  <Textarea
-                    id="supplies-description"
-                    placeholder="Detalle los insumos donados"
-                    className="min-h-[100px]"
-                    required
-                    ref={suppliesDescriptionRef}
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {/* Solo mostrar el formulario de insumos si es recepción */}
+              {isReception && (
+                <TabsContent value="supplies" className="space-y-4 pt-4">
                   <div className="space-y-2">
-                    <Label htmlFor="quantity">Cantidad</Label>
-                    <Input id="quantity" type="number" min="1" placeholder="1" required ref={quantityRef} />
+                    <Label htmlFor="supplies-description">Descripción de Insumos</Label>
+                    <Textarea
+                      id="supplies-description"
+                      placeholder="Detalle los insumos donados"
+                      className="min-h-[100px]"
+                      required
+                      ref={suppliesDescriptionRef}
+                    />
                   </div>
-                </div>
-              </TabsContent>
+
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                    <div className="space-y-2">
+                      <Label htmlFor="quantity">Cantidad</Label>
+                      <Input id="quantity" type="number" min="1" placeholder="1" required ref={quantityRef} />
+                    </div>
+                  </div>
+                </TabsContent>
+              )}
             </CardContent>
             <CardFooter className="flex justify-between">
               <Button variant="outline" type="button" onClick={() => router.back()}>
