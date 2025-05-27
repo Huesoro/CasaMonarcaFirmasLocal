@@ -30,7 +30,7 @@ export default function NewUser() {
     setIsSubmitting(true)
     try {
       // 1. Crear usuario
-      const res = await fetch("/api/crear-usuario", {
+      const res = await fetch("http://localhost:8000/api/crear-usuario", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -47,7 +47,7 @@ export default function NewUser() {
           const formData = new FormData()
           formData.append("firma", firmaFile)
           formData.append("email", emailRef.current.value)
-          const uploadRes = await fetch("/api/upload-firma", {
+          const uploadRes = await fetch("http://localhost:8000/api/upload-firma", {
             method: "POST",
             body: formData,
           })
