@@ -546,3 +546,20 @@ INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8
 INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
 INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
 INFO:root:Flujo de firmas actualizado para doc_id=341a23ff-1676-4a20-beeb-d8a370272856, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Campo de firma agregado: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado_firmado_campo.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado_firmado_campo.pdf
+INFO:root:Error al firmar PDF: '_io.BufferedReader' object has no attribute 'root'
+INFO:root:Error al firmar digitalmente: '_io.BufferedReader' object has no attribute 'root'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=341a23ff-1676-4a20-beeb-d8a370272856, user_id=3, rol=reception

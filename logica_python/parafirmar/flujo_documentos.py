@@ -176,16 +176,6 @@ def buscar_llave_correo(correo):
     else:
         raise FileNotFoundError(f"Llave no encontrada para {correo}")
 
-def agregar_campo_firma(pdf_path, output_path, nombre_campo='FirmaDigital'):
-    with open(pdf_path, 'rb') as doc:
-        writer = IncrementalPdfFileWriter(doc)
-        sig_field_spec = SigFieldSpec(sig_field_name=nombre_campo)  # Invisible
-        append_signature_field(writer, sig_field_spec)
-        with open(output_path, 'wb') as out_doc:
-            writer.write(out_doc)
-    print(f"Campo de firma agregado: {output_path}")
-    logging.info(f"Campo de firma agregado: {output_path}")
-
 # Flujo principal actualizado
 
 def flujo_documento(user_id, doc_id, password_firma, placeholder_nombre="{nombre_inventario}", rol=None):
@@ -219,8 +209,6 @@ def flujo_documento(user_id, doc_id, password_firma, placeholder_nombre="{nombre
         ruta_docx_firmado = os.path.join(carpeta_destino, nombre_archivo.replace('.docx', '_firmado.docx'))
         output_pdf = nombre_archivo.replace('.docx', '_firmado.pdf')
         ruta_pdf_firmado = os.path.join(carpeta_destino, output_pdf)
-        ruta_pdf_con_campo = os.path.join(carpeta_destino, output_pdf.replace('.pdf', '_firmado_campo.pdf'))
-        ruta_pdf_firmado_digital = os.path.join(carpeta_destino, output_pdf.replace('.pdf', '_firmado_digital.pdf'))
 
         # Copiar el archivo original a la ruta de firmado para no modificar el original
         shutil.copy2(ruta_archivo_original, ruta_docx_firmado)
@@ -260,19 +248,10 @@ def flujo_documento(user_id, doc_id, password_firma, placeholder_nombre="{nombre
             logging.info(f"Error al convertir a PDF: {e}")
             return {"status": "error", "message": f"Error al convertir a PDF: {e}"}
 
-        # Agregar campo de firma digital invisible
+        logging.info(f"Firmando digitalmente PDF: {ruta_pdf_firmado}")
         try:
-            agregar_campo_firma(ruta_pdf_firmado, ruta_pdf_con_campo, nombre_campo='FirmaDigital')
-        except Exception as e:
-            logging.info(f"Error al agregar campo de firma: {e}")
-            return {"status": "error", "message": f"Error al agregar campo de firma: {e}"}
-
-        logging.info(f"Firmando digitalmente PDF: {ruta_pdf_con_campo}")
-        try:
-            import nest_asyncio
-            nest_asyncio.apply()
-            asyncio.run(firmar_digitalmente_pdf(ruta_pdf_con_campo, ruta_certificado, ruta_llave, ruta_pdf_firmado_digital, password_firma))
-            logging.info(f"PDF firmado digitalmente: {ruta_pdf_firmado_digital}")
+             firmar_digitalmente_pdf(ruta_pdf_firmado, ruta_certificado, ruta_llave, ruta_pdf_firmado, password_firma)
+             logging.info(f"PDF firmado digitalmente: {ruta_pdf_firmado}")
         except Exception as e:
             logging.info(f"Error al firmar digitalmente: {e}")
             return {"status": "error", "message": f"Error al firmar digitalmente: {e}"}
@@ -288,7 +267,7 @@ def flujo_documento(user_id, doc_id, password_firma, placeholder_nombre="{nombre
         return {
             "status": "success",
             "message": "Documento PDF firmado digitalmente guardado y flujo actualizado.",
-            "output_pdf": ruta_pdf_firmado_digital,
+            "output_pdf": ruta_pdf_firmado,
             "usuario": usuario,
             "documento": documento
         }
