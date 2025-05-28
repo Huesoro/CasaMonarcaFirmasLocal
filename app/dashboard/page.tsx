@@ -24,7 +24,7 @@ export default function Dashboard() {
         description: "Documentos que requieren tu firma",
         icon: <FileSignature className="h-6 w-6" />,
         href: "/documents",
-        roles: ["finance", "legal", "executive", "admin"],
+        roles: ["finance", "legal", "executive", "admin","reception"],
       },
       {
         title: "Historial de Donaciones",

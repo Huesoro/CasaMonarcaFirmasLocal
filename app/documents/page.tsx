@@ -111,6 +111,7 @@ export default function Documents() {
           doc_id: doc.doc_id,
           user_id: user.user_id,
           rol: user.role,
+          password_firma: password,
         }),
       })
       const data = await res.json()
