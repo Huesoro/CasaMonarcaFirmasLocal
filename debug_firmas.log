@@ -563,3 +563,122 @@ INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8
 INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
 INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
 INFO:root:Flujo de firmas actualizado para doc_id=341a23ff-1676-4a20-beeb-d8a370272856, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=341a23ff-1676-4a20-beeb-d8a370272856, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:ERROR FLUJO: This event loop is already running
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Error al firmar digitalmente: ('Could not deserialize key data. The data may be in an incorrect format, the provided password may be incorrect, it may be encrypted with an unsupported algorithm, or it may be an unsupported key type (e.g. EC curves with explicit parameters).', [<OpenSSLError(code=478150756, lib=57, reason=100, reason_text=bad decrypt)>, <OpenSSLError(code=293601396, lib=35, reason=116, reason_text=pkcs12 cipherfinal error)>, <OpenSSLError(code=478150756, lib=57, reason=100, reason_text=bad decrypt)>, <OpenSSLError(code=293601396, lib=35, reason=116, reason_text=pkcs12 cipherfinal error)>])
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Error al firmar PDF: asyncio.run() cannot be called from a running event loop
+INFO:root:Error al firmar digitalmente: asyncio.run() cannot be called from a running event loop
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Error al firmar digitalmente: asyncio.run() cannot be called from a running event loop
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Error al firmar digitalmente: type object 'SimpleSigner' has no attribute 'load_async'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Error al firmar digitalmente: Attempting to sign document with hybrid cross-reference sections while hybrid xrefs are disabled
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=341a23ff-1676-4a20-beeb-d8a370272856, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '5916d1d8-d4e0-4a8b-b153-87c53aaec8ca', 'title': 'Donación especie 5916d1d8-d4e0-4a8b-b153-87c53aaec8ca', 'sharepoint_url': 'SharePoint/Donaciones/doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=5916d1d8-d4e0-4a8b-b153-87c53aaec8ca, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'c164aace-373f-4511-ad2d-98560100e500', 'title': 'Donación dinero c164aace-373f-4511-ad2d-98560100e500', 'sharepoint_url': 'SharePoint/Donaciones/doc_c164aace-373f-4511-ad2d-98560100e500.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_c164aace-373f-4511-ad2d-98560100e500.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_c164aace-373f-4511-ad2d-98560100e500_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_c164aace-373f-4511-ad2d-98560100e500_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_c164aace-373f-4511-ad2d-98560100e500_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=c164aace-373f-4511-ad2d-98560100e500, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '2286a30b-c175-4a63-94fc-4f3c54931b5b', 'title': 'Donación especie 2286a30b-c175-4a63-94fc-4f3c54931b5b', 'sharepoint_url': 'SharePoint/Donaciones/doc_2286a30b-c175-4a63-94fc-4f3c54931b5b.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_2286a30b-c175-4a63-94fc-4f3c54931b5b.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_2286a30b-c175-4a63-94fc-4f3c54931b5b_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_2286a30b-c175-4a63-94fc-4f3c54931b5b_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_2286a30b-c175-4a63-94fc-4f3c54931b5b_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=2286a30b-c175-4a63-94fc-4f3c54931b5b, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '5916d1d8-d4e0-4a8b-b153-87c53aaec8ca', 'title': 'Donación especie 5916d1d8-d4e0-4a8b-b153-87c53aaec8ca', 'sharepoint_url': 'SharePoint/Donaciones/doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=5916d1d8-d4e0-4a8b-b153-87c53aaec8ca, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=b667ee07-74f5-4beb-8543-0cc82c2b2a43, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '68aaabe2-e15c-4229-8b39-0f4416491cbe', 'title': 'Donación dinero 68aaabe2-e15c-4229-8b39-0f4416491cbe', 'sharepoint_url': 'SharePoint/Donaciones/doc_68aaabe2-e15c-4229-8b39-0f4416491cbe.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_68aaabe2-e15c-4229-8b39-0f4416491cbe.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_68aaabe2-e15c-4229-8b39-0f4416491cbe_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_68aaabe2-e15c-4229-8b39-0f4416491cbe_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_68aaabe2-e15c-4229-8b39-0f4416491cbe_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=68aaabe2-e15c-4229-8b39-0f4416491cbe, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 2, 'name': 'Finanzas', 'role': 'finance', 'email': 'finanzas@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '20b0a996-1362-4ce2-90df-02efc73a9057', 'title': 'Donación dinero 20b0a996-1362-4ce2-90df-02efc73a9057', 'sharepoint_url': 'SharePoint/Donaciones/doc_20b0a996-1362-4ce2-90df-02efc73a9057.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_20b0a996-1362-4ce2-90df-02efc73a9057.docx
+INFO:root:Firma no encontrada: Firma no encontrada para finanzas@casamonarca.org
+INFO:root:Usuario encontrado: {'user_id': 2, 'name': 'Finanzas', 'role': 'finance', 'email': 'finanzas@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '20b0a996-1362-4ce2-90df-02efc73a9057', 'title': 'Donación dinero 20b0a996-1362-4ce2-90df-02efc73a9057', 'sharepoint_url': 'SharePoint/Donaciones/doc_20b0a996-1362-4ce2-90df-02efc73a9057.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_20b0a996-1362-4ce2-90df-02efc73a9057.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_20b0a996-1362-4ce2-90df-02efc73a9057_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_20b0a996-1362-4ce2-90df-02efc73a9057_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_20b0a996-1362-4ce2-90df-02efc73a9057_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=20b0a996-1362-4ce2-90df-02efc73a9057, user_id=2, rol=finance

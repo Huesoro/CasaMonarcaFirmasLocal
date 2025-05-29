@@ -17,14 +17,14 @@ export default function Dashboard() {
         description: "Crear un nuevo registro de donación",
         icon: <FileText className="h-6 w-6" />,
         href: "/donations/new",
-        roles: ["finance", "reception"],
+        roles: ["finance", "reception","inventory"],
       },
       {
         title: "Documentos Pendientes",
         description: "Documentos que requieren tu firma",
         icon: <FileSignature className="h-6 w-6" />,
         href: "/documents",
-        roles: ["finance", "legal", "executive", "admin","reception"],
+        roles: ["finance", "legal", "executive", "admin","reception","inventory"],
       },
       {
         title: "Historial de Donaciones",
