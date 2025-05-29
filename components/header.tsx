@@ -21,8 +21,8 @@ export default function Header() {
 
   const navigation = [
     { name: "Inicio", href: "/dashboard" },
-    { name: "Donaciones", href: "/donations" },
-    { name: "Documentos", href: "/documents" },
+    /*{ name: "Donaciones", href: "/donations" },
+    { name: "Documentos", href: "/documents" },*/
     { name: "Historial", href: "/history" },
   ]
 
