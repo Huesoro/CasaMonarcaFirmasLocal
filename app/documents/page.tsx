@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dialog"
 import { FileText, Download, CheckCircle, Clock, AlertCircle } from "lucide-react"
 import { toast } from "@/components/ui/use-toast"
+import mammoth from 'mammoth';
 
 // Define el tipo de documento según la base de datos
 interface Documento {
@@ -26,6 +27,9 @@ interface Documento {
   user_id: number
   created_at: string
   updated_at: string
+  firma_status: string
+  fecha_firma: string | null
+  creador_nombre: string
 }
 
 export default function Documents() {
@@ -38,28 +42,71 @@ export default function Documents() {
   const [loading, setLoading] = useState(true)
   const [firmas, setFirmas] = useState<any[]>([])
   const [loadingFirmas, setLoadingFirmas] = useState(false)
+  const [docContent, setDocContent] = useState<string>('');
+  const [isLoadingDoc, setIsLoadingDoc] = useState(false);
 
   // Cargar documentos según la pestaña
   const fetchDocuments = async (tab = activeTab) => {
     setLoading(true)
     try {
       let docs = []
-      if (tab === "pending" && user) {
+      if (user) {
         const res = await fetch(`http://localhost:8000/api/documentos/pendientes?user_id=${user.user_id}&rol=${user.role}`)
         const data = await res.json()
         docs = data.documentos || []
-      } else if (tab === "all") {
-        const res = await fetch("http://localhost:8000/api/historial-donaciones")
-        const data = await res.json()
-        docs = data.donaciones || []
-      } else if (user) {
-        // Para firmados y rechazados, filtra los documentos pendientes por status
-        const res = await fetch(`http://localhost:8000/api/documentos/pendientes?user_id=${user.user_id}&rol=${user.role}`)
-        const data = await res.json()
-        docs = (data.documentos || []).filter(doc => doc.status === tab)
+        
+        // Filtrar documentos según la pestaña activa
+        if (tab === "pending") {
+          docs = docs.filter(doc => doc.firma_status === "pendiente")
+        } else if (tab === "signed") {
+          docs = docs.filter(doc => doc.firma_status === "firmado")
+        } else if (tab === "rejected") {
+          docs = docs.filter(doc => doc.firma_status === "rechazado")
+        } else if (tab === "all") {
+          // Para la pestaña "Todos", comportamiento según rol
+          if (user.role === "reception") {
+            // Recepción solo ve sus propios documentos
+            docs = docs.filter(doc => doc.user_id === user.user_id)
+          } else if (user.role === "finance") {
+            // Finanzas ve todos los documentos de tipo dinero
+            const resHistorial = await fetch("http://localhost:8000/api/historial-donaciones")
+            const dataHistorial = await resHistorial.json()
+            docs = (dataHistorial.donaciones || [])
+              .filter(doc => doc.type === "money")
+              .map(doc => ({
+                ...doc,
+                doc_id: doc.id.replace('don-', ''),
+                firma_status: doc.status,
+                Type: "dinero",
+                status: doc.status
+              }))
+          } else if (user.role === "inventory") {
+            // Inventario ve todos los documentos de tipo insumos
+            const resHistorial = await fetch("http://localhost:8000/api/historial-donaciones")
+            const dataHistorial = await resHistorial.json()
+            docs = (dataHistorial.donaciones || [])
+              .filter(doc => doc.type === "supplies")
+              .map(doc => ({
+                ...doc,
+                doc_id: doc.id.replace('don-', ''),
+                firma_status: doc.status
+              }))
+          } else if (user.role === "admin") {
+            // Admin ve todos los documentos
+            const resHistorial = await fetch("http://localhost:8000/api/historial-donaciones")
+            const dataHistorial = await resHistorial.json()
+            docs = (dataHistorial.donaciones || [])
+              .map(doc => ({
+                ...doc,
+                doc_id: doc.id.replace('don-', ''),
+                firma_status: doc.status
+              }))
+          }
+        }
       }
       setDocuments(docs)
-    } catch {
+    } catch (error) {
+      console.error("Error fetching documents:", error)
       setDocuments([])
     } finally {
       setLoading(false)
@@ -84,19 +131,21 @@ export default function Documents() {
     }
   }, [selectedDocument, user])
 
+  useEffect(() => {
+    if (selectedDocument) {
+      setIsLoadingDoc(true);
+      loadDocumentContent(selectedDocument)
+        .finally(() => setIsLoadingDoc(false));
+    }
+  }, [selectedDocument]);
+
   if (!user) {
     return <div>Cargando...</div>
   }
 
   const filteredDocuments = documents.filter((doc) => {
-    if (activeTab === "all") {
-      if (user?.role === "finance") return doc.Type === "dinero"
-      if (user?.role === "inventory") return doc.Type === "especie"
-      return true
-    }
-    if (user?.role === "finance") return doc.Type === "dinero" && doc.status === activeTab
-    if (user?.role === "inventory") return doc.Type === "especie" && doc.status === activeTab
-    return doc.status === activeTab
+    // Ya no necesitamos filtrar aquí porque todo el filtrado se hace en fetchDocuments
+    return true
   })
 
   const handleSignDocument = async (doc: any) => {
@@ -111,6 +160,7 @@ export default function Documents() {
           doc_id: doc.doc_id,
           user_id: user.user_id,
           rol: user.role,
+          password_firma: password,
         }),
       })
       const data = await res.json()
@@ -129,11 +179,14 @@ export default function Documents() {
   }
 
   const getStatusIcon = (status: string) => {
-    switch (status) {
+    switch (status?.toLowerCase()) {
+      case "firmado":
       case "signed":
         return <CheckCircle className="h-5 w-5 text-green-500" />
+      case "pendiente":
       case "pending":
         return <Clock className="h-5 w-5 text-amber-500" />
+      case "rechazado":
       case "rejected":
         return <AlertCircle className="h-5 w-5 text-red-500" />
       default:
@@ -142,17 +195,72 @@ export default function Documents() {
   }
 
   const getStatusText = (status: string) => {
-    switch (status) {
+    switch (status?.toLowerCase()) {
+      case "firmado":
       case "signed":
         return "Firmado"
+      case "pendiente":
       case "pending":
         return "Pendiente"
+      case "rechazado":
       case "rejected":
         return "Rechazado"
       default:
         return status
     }
   }
+
+  const loadDocumentContent = async (doc: any) => {
+    try {
+      const documentId = doc.doc_id || doc.id;
+      const fileType = doc.sharepoint_url.toLowerCase().split('.').pop();
+      
+      // Determinar si debemos usar el archivo firmado
+      const useFirmado = doc.firma_status === "firmado" && fileType === "docx";
+      const url = `http://localhost:8000/api/documents/download/${documentId}${useFirmado ? '?firmado=true' : ''}`;
+      
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Error al descargar el documento: ${response.statusText}`);
+      }
+
+      const blob = await response.blob();
+      
+      if (fileType === 'pdf') {
+        const url = URL.createObjectURL(blob);
+        setDocContent(url);
+      } else if (fileType === 'docx') {
+        try {
+          const arrayBuffer = await blob.arrayBuffer();
+          const result = await mammoth.convertToHtml({ arrayBuffer });
+          setDocContent(result.value);
+        } catch (mammothError) {
+          console.error('Error al convertir DOCX:', mammothError);
+          setDocContent(`
+            <div class="p-4 text-center">
+              <p class="text-red-500 mb-4">No se pudo previsualizar el documento DOCX.</p>
+              <p class="text-sm text-gray-500">Por favor, descarga el documento para verlo.</p>
+            </div>
+          `);
+        }
+      } else {
+        setDocContent(`
+          <div class="p-4 text-center">
+            <p class="text-gray-500">Este tipo de archivo no se puede previsualizar.</p>
+            <p class="text-sm text-gray-500">Por favor, descarga el documento para verlo.</p>
+          </div>
+        `);
+      }
+    } catch (error) {
+      console.error('Error al cargar el documento:', error);
+      setDocContent(`
+        <div class="p-4 text-center">
+          <p class="text-red-500 mb-4">Error al cargar el documento.</p>
+          <p class="text-sm text-gray-500">Por favor, intenta descargarlo.</p>
+        </div>
+      `);
+    }
+  };
 
   return (
     <div className="container mx-auto px-4 py-10">
@@ -188,7 +296,7 @@ export default function Documents() {
                   <CardHeader className="pb-3">
                     <div className="flex items-start justify-between">
                       <CardTitle className="text-lg font-medium">{doc.title}</CardTitle>
-                      <div>{getStatusIcon(doc.status)}</div>
+                      <div>{getStatusIcon(doc.firma_status || doc.status)}</div>
                     </div>
                     <CardDescription>Creado por: {doc.creador_nombre}</CardDescription>
                   </CardHeader>
@@ -199,6 +307,11 @@ export default function Documents() {
                       </span>
                       <span className="capitalize">Tipo: {doc.Type === "dinero" ? "Dinero" : "Insumos"}</span>
                     </div>
+                    {doc.fecha_firma && (
+                      <div className="text-sm text-muted-foreground mt-2">
+                        Firmado el: {new Date(doc.fecha_firma).toLocaleString()}
+                      </div>
+                    )}
                   </CardContent>
                   <CardFooter className="flex justify-between pt-0">
                     <Button
@@ -211,7 +324,7 @@ export default function Documents() {
                     >
                       Ver documento
                     </Button>
-                    {doc.status === "pending" && (
+                    {doc.firma_status === "pendiente" && (
                       <Button
                         size="sm"
                         onClick={() => {
@@ -238,40 +351,46 @@ export default function Documents() {
               <DialogHeader>
                 <DialogTitle>{selectedDocument.title}</DialogTitle>
                 <DialogDescription>
-                  Creado por usuario ID: {selectedDocument.user_id} el {new Date(selectedDocument.created_at).toLocaleDateString()}
+                  Creado por: {selectedDocument.creador_nombre} el {new Date(selectedDocument.created_at).toLocaleDateString()}
                 </DialogDescription>
               </DialogHeader>
 
               <div className="max-h-[60vh] overflow-y-auto rounded-md border p-4">
-                {selectedDocument && (
+                {isLoadingDoc ? (
+                  <div className="flex items-center justify-center h-[500px]">
+                    <div className="text-center">
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto mb-4"></div>
+                      <p className="text-gray-500">Cargando documento...</p>
+                    </div>
+                  </div>
+                ) : (
                   (() => {
-                    const fileUrl = `/api/documents/download/${selectedDocument.doc_id}`;
-                    const isPDF = selectedDocument.sharepoint_url.toLowerCase().endsWith('.pdf');
-                    const isDocx = selectedDocument.sharepoint_url.toLowerCase().endsWith('.docx');
-                    if (isPDF) {
+                    const fileType = selectedDocument.sharepoint_url.toLowerCase().split('.').pop();
+                    
+                    if (fileType === 'pdf') {
                       return (
                         <iframe
-                          src={fileUrl}
+                          src={docContent}
                           title="Vista previa del documento PDF"
                           width="100%"
                           height="500px"
                           style={{ border: 'none' }}
                         />
                       );
-                    } else if (isDocx) {
-                      // Usar Google Docs Viewer para .docx
-                      const googleViewer = `https://docs.google.com/gview?url=${window.location.origin}${fileUrl}&embedded=true`;
+                    } else if (fileType === 'docx') {
                       return (
-                        <iframe
-                          src={googleViewer}
-                          title="Vista previa del documento Word"
-                          width="100%"
-                          height="500px"
-                          style={{ border: 'none' }}
+                        <div 
+                          className="prose max-w-none"
+                          dangerouslySetInnerHTML={{ __html: docContent }}
                         />
                       );
                     } else {
-                      return <div>No se puede previsualizar este tipo de archivo.</div>;
+                      return (
+                        <div className="p-4 text-center">
+                          <p className="text-gray-500">Este tipo de archivo no se puede previsualizar.</p>
+                          <p className="text-sm text-gray-500">Por favor, descarga el documento para verlo.</p>
+                        </div>
+                      );
                     }
                   })()
                 )}
@@ -283,15 +402,23 @@ export default function Documents() {
                   className="flex items-center gap-2"
                   onClick={() => {
                     if (selectedDocument) {
-                      window.open(`http://localhost:8000/api/documents/download/${selectedDocument.doc_id}`, "_blank");
+                      const documentId = selectedDocument.doc_id || selectedDocument.id;
+                      const fileType = selectedDocument.sharepoint_url.toLowerCase().split('.').pop();
+                      const useFirmado = selectedDocument.firma_status === "firmado" && fileType === "docx";
+                      const url = `http://localhost:8000/api/documents/download/${documentId}${useFirmado ? '?firmado=true' : ''}`;
+                      window.open(url, "_blank");
                     }
                   }}
                 >
                   <Download className="h-4 w-4" />
                   Descargar
                 </Button>
-                {selectedDocument.status === "pending" && (
-                  <Button onClick={() => handleSignDocument(selectedDocument)} disabled={isSigning} className="flex items-center gap-2">
+                {selectedDocument.firma_status === "pendiente" && (
+                  <Button 
+                    onClick={() => handleSignDocument(selectedDocument)} 
+                    disabled={isSigning} 
+                    className="flex items-center gap-2"
+                  >
                     <CheckCircle className="h-4 w-4" />
                     {isSigning ? "Firmando..." : "Firmar Documento"}
                   </Button>
@@ -310,8 +437,14 @@ export default function Documents() {
                           <span className="font-mono text-xs text-gray-500">Paso {f.orden}:</span>
                           <span className="font-semibold">{f.nombre || <em>Pendiente</em>}</span>
                           <span className="text-xs">({f.rol})</span>
-                          <span className={`text-xs ${f.status === 'firmado' ? 'text-green-600' : f.status === 'pendiente' ? 'text-yellow-600' : 'text-red-600'}`}>{f.status}</span>
-                          {f.fecha_firma && <span className="text-xs text-gray-400 ml-2">{new Date(f.fecha_firma).toLocaleString()}</span>}
+                          <span className={`text-xs ${f.status === 'firmado' ? 'text-green-600' : f.status === 'pendiente' ? 'text-yellow-600' : 'text-red-600'}`}>
+                            {f.status}
+                          </span>
+                          {f.fecha_firma && (
+                            <span className="text-xs text-gray-400 ml-2">
+                              {new Date(f.fecha_firma).toLocaleString()}
+                            </span>
+                          )}
                         </li>
                       ))}
                     </ul>
