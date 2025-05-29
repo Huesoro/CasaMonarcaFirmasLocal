@@ -144,8 +144,8 @@ export default function History() {
                         <Badge variant="secondary">{donation.type}</Badge>
                       </TableCell>
                       <TableCell className="text-right">
-                        <a href={donation.url} target="_blank" className="text-blue-600 underline">
-                          Ver / Descargar
+                        <a href={donation.url} download className="text-blue-600 underline">
+                          Descargar
                         </a>
                       </TableCell>
                     </TableRow>
