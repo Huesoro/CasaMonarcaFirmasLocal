@@ -231,38 +231,192 @@ def insertar_flujo_firmas(doc_id, creador_id, tipo_donacion):
     conn.close()
 
 def get_documentos_para_firmar(user_id, rol):
-    conn = sqlite3.connect('Azure_SQL/Firmas.db')
-    cursor = conn.cursor()
-    # Solo los pasos pendientes y que le tocan al usuario/rol
-    cursor.execute("""
-        SELECT doc_id FROM firmas_documento
-        WHERE status = 'pendiente' AND (user_id = ? OR role = ?)
-        ORDER BY orden ASC
-    """, (user_id, rol))
-    docs = [row[0] for row in cursor.fetchall()]
-    conn.close()
-    return docs
+    """
+    Obtiene los documentos que el usuario/rol debe firmar o ya firmó según su posición en el flujo
+    y las restricciones de su rol
+    """
+    try:
+        conn_firmas = sqlite3.connect('Azure_SQL/firmas.db')
+        cursor_firmas = conn_firmas.cursor()
+        
+        # Obtener el orden del usuario/rol
+        cursor_firmas.execute("""
+            SELECT orden FROM firmas_documento 
+            WHERE (user_id = ? OR role = ?)
+            ORDER BY orden ASC LIMIT 1
+        """, (user_id, rol))
+        
+        resultado = cursor_firmas.fetchone()
+        if not resultado:
+            conn_firmas.close()
+            return []
+        
+        orden_actual = resultado[0]
+        
+        # Obtener los doc_ids que están asignados a este usuario/rol
+        # y donde todos los pasos anteriores están firmados
+        cursor_firmas.execute("""
+            WITH PasosAnteriores AS (
+                SELECT doc_id, MAX(orden) as max_orden_anterior
+                FROM firmas_documento
+                WHERE orden < ?
+                GROUP BY doc_id
+            )
+            SELECT f.doc_id, f.status 
+            FROM firmas_documento f
+            LEFT JOIN PasosAnteriores p ON f.doc_id = p.doc_id
+            WHERE f.orden = ? 
+            AND (f.user_id = ? OR f.role = ?)
+            AND (
+                p.max_orden_anterior IS NULL 
+                OR EXISTS (
+                    SELECT 1 
+                    FROM firmas_documento fa 
+                    WHERE fa.doc_id = f.doc_id 
+                    AND fa.orden < f.orden 
+                    AND fa.status = 'firmado'
+                )
+            )
+        """, (orden_actual, orden_actual, user_id, rol))
+        
+        doc_ids = [row[0] for row in cursor_firmas.fetchall()]
+        conn_firmas.close()
+        
+        if not doc_ids:
+            return []
+            
+        # Ahora obtenemos la información completa de los documentos
+        conn_docs = sqlite3.connect('Azure_SQL/Documentos.db')
+        cursor_docs = conn_docs.cursor()
+        
+        # Construir la consulta base
+        query = """
+            SELECT doc_id, title, sharepoint_url, Type, status, user_id, created_at, updated_at
+            FROM documentos 
+            WHERE doc_id IN ({})
+        """.format(','.join(['?' for _ in doc_ids]))
+        
+        # Agregar restricciones según el rol
+        if rol == "reception":
+            # Recepción solo ve sus propios documentos
+            query += " AND user_id = ?"
+            params = doc_ids + [user_id]
+        elif rol == "finance":
+            # Finanzas solo ve documentos de tipo dinero
+            query += " AND Type = 'dinero'"
+            params = doc_ids
+        elif rol == "inventory":
+            # Inventario solo ve documentos de tipo insumos
+            query += " AND Type = 'insumos'"
+            params = doc_ids
+        elif rol == "admin":
+            # Admin ve todo
+            params = doc_ids
+        else:
+            # Para otros roles, no mostrar nada
+            conn_docs.close()
+            return []
+        
+        cursor_docs.execute(query, params)
+        rows = cursor_docs.fetchall()
+        
+        # Obtener el estado de firma para cada documento
+        conn_firmas = sqlite3.connect('Azure_SQL/firmas.db')
+        cursor_firmas = conn_firmas.cursor()
+        
+        docs = []
+        for row in rows:
+            # Obtener el estado de firma para este documento y usuario/rol
+            cursor_firmas.execute("""
+                SELECT status, fecha_firma 
+                FROM firmas_documento 
+                WHERE doc_id = ? AND (user_id = ? OR role = ?)
+            """, (row[0], user_id, rol))
+            
+            firma_info = cursor_firmas.fetchone()
+            firma_status = firma_info[0] if firma_info else "pendiente"
+            fecha_firma = firma_info[1] if firma_info else None
+            
+            # Si el documento está rechazado, asegurarnos de que se refleje en firma_status
+            if firma_status == "rechazado":
+                firma_status = "rechazado"
+            
+            docs.append({
+                "doc_id": row[0],
+                "title": row[1],
+                "sharepoint_url": row[2],
+                "Type": row[3],
+                "status": row[4],
+                "user_id": row[5],
+                "created_at": row[6],
+                "updated_at": row[7],
+                "firma_status": firma_status,
+                "fecha_firma": fecha_firma
+            })
+        
+        conn_docs.close()
+        conn_firmas.close()
+        return docs
+        
+    except sqlite3.Error as e:
+        print(f"Error en get_documentos_para_firmar: {e}")
+        return []
 
 def firmar_documento(doc_id, user_id, rol):
-    conn = sqlite3.connect('Azure_SQL/Firmas.db')
+    """
+    Marca un documento como firmado por el usuario/rol específico y lo pasa al siguiente en el flujo
+    """
+    conn = sqlite3.connect('Azure_SQL/firmas.db')
     cursor = conn.cursor()
     now = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    # Marcar como firmado el paso correspondiente
+    
+    # Obtener el orden actual del usuario/rol
     cursor.execute("""
-    SELECT orden FROM firmas_documento
-    WHERE doc_id = ? AND status = 'pendiente' AND (user_id = ? OR role = ?)
-    ORDER BY orden ASC LIMIT 1
-""", (now, doc_id, user_id))
+        SELECT orden FROM firmas_documento 
+        WHERE doc_id = ? AND (user_id = ? OR role = ?)
+    """, (doc_id, user_id, rol))
+    
+    orden_actual = cursor.fetchone()[0]
+    
+    # Marcar como firmado el paso actual
+    cursor.execute("""
+        UPDATE firmas_documento 
+        SET status = 'firmado', fecha_firma = ?
+        WHERE doc_id = ? AND orden = ?
+    """, (now, doc_id, orden_actual))
+    
+    # Obtener el siguiente paso
+    cursor.execute("""
+        SELECT orden FROM firmas_documento 
+        WHERE doc_id = ? AND orden > ?
+        ORDER BY orden ASC LIMIT 1
+    """, (doc_id, orden_actual))
+    
+    siguiente_paso = cursor.fetchone()
+    
+    if siguiente_paso:
+        # Actualizar el estado del siguiente paso a pendiente
+        cursor.execute("""
+            UPDATE firmas_documento 
+            SET status = 'pendiente'
+            WHERE doc_id = ? AND orden = ?
+        """, (doc_id, siguiente_paso[0]))
+    
     conn.commit()
-    # Si ya no hay pasos pendientes, marcar documento como firmado
+    
+    # Verificar si es el último paso
     cursor.execute("""
-        SELECT COUNT(*) FROM firmas_documento WHERE doc_id = ? AND status = 'pendiente'
+        SELECT MAX(orden) FROM firmas_documento WHERE doc_id = ?
     """, (doc_id,))
-    if cursor.fetchone()[0] == 0:
-        # Actualiza el status del documento en Documentos.db
+    
+    ultimo_orden = cursor.fetchone()[0]
+    
+    if orden_actual == ultimo_orden:
+        # Si es el último paso, marcar el documento como completamente firmado
         conn2 = sqlite3.connect('Azure_SQL/Documentos.db')
         cursor2 = conn2.cursor()
         cursor2.execute("UPDATE documentos SET status = 'signed' WHERE doc_id = ?", (doc_id,))
         conn2.commit()
         conn2.close()
+    
     conn.close()

@@ -1,0 +1,684 @@
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo no encontrado: Archivo no encontrado en SharePoint: SharePoint\SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Carpeta temporal creada: C:\Users\rkale\AppData\Local\Temp\tmpu4sz8dpp
+INFO:root:Archivo copiado a: C:\Users\rkale\AppData\Local\Temp\tmpu4sz8dpp\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Firma no encontrada: Firma no encontrada para recepcion@casamonarca.org
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Carpeta temporal creada: C:\Users\rkale\AppData\Local\Temp\tmpeotelfy0
+INFO:root:Archivo copiado a: C:\Users\rkale\AppData\Local\Temp\tmpeotelfy0\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Certificado no encontrado: Certificado no encontrado para recepcion@casamonarca.org
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Carpeta temporal creada: C:\Users\rkale\AppData\Local\Temp\tmp_uzczd8i
+INFO:root:Archivo copiado a: C:\Users\rkale\AppData\Local\Temp\tmp_uzczd8i\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Certificado no encontrado: Certificado no encontrado para recepcion@casamonarca.org
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Carpeta temporal creada: C:\Users\rkale\AppData\Local\Temp\tmpy21thoz0
+INFO:root:Archivo copiado a: C:\Users\rkale\AppData\Local\Temp\tmpy21thoz0\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:No se encontró el marcador para firmar en el documento.
+INFO:root:Convertido a PDF: C:\Users\rkale\AppData\Local\Temp\tmpy21thoz0\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: C:\Users\rkale\AppData\Local\Temp\tmpy21thoz0\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Error al firmar digitalmente: [Errno 2] No such file or directory: b'-----BEGIN CERTIFICATE-----\nMIIDCjCCAfKgAwIBAgIUTO5lFqWSCdAxHv1X5CwS3Z+E26QwDQYJKoZIhvcNAQEL\nBQAwPzETMBEGA1UEAwwKUmVjZXBjacOzbjEoMCYGCSqGSIb3DQEJARYZcmVjZXBj\naW9uQGNhc2Ftb25hcmNhLm9yZzAeFw0yNTA1MjUyMTI4MTFaFw0yNjA1MjUyMTI4\nMTFaMD8xEzARBgNVBAMMClJlY2VwY2nDs24xKDAmBgkqhkiG9w0BCQEWGXJlY2Vw\nY2lvbkBjYXNhbW9uYXJjYS5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK\nAoIBAQC8BlzgmYrvgHsOzsSDSnUv388aq7Pja8yGF4dBArvfxl2ipHHiT6I3w2gw\nQ10eq/QSXOZM4a1EI4TqxhbXDOj/5Ua6u/QfXvb640nCd6JuyomHkVH0r0Z7S2SG\nJryGHVv4IFpWYkPceJM9dHH5YvQiBtbccEiuWPgbYLWCIUappI1cYrgdl6H43GiW\nrX96FH5v25zR0/xB2J97BIgcRF9q6b6YH9SnLFvdaCK1FvHqP8K9+1OR4kRyA5sZ\nbIrIT7xMjUTo/zxssG3IKclRQuKNIJsZDy3Gh2lTIltLTDKOm4uu0oECTUq0kSiI\nnEaeKVdjBaKyHfHQnM0A8zMC2sqzAgMBAAEwDQYJKoZIhvcNAQELBQADggEBALsp\nJl+MwtZAjWM4VDKD7tSRLb+mCmCQF8JdfrMqWCjrUzh7HxX/hIcdqlZt9EE6kUsZ\nw/iB1/Ot+R6Rho0pq3g7JrGEizEKhSA1dP4hEjrrAXpQzUxaWYM3mespFrzdkNRx\nh0xdOP4Zz6ol3KrUCnykbaR1E3AfvtjSK3m6UhpVirbADzhm8WQxAoEcA/8G3r+t\nZkkzsLqRv93f2PNJ8dnrAuyYdrfky1Y9J5GZla2Bz+XfLqtPkcWPxirKbpgXAggi\niUEe+q+kmjf+95mm0FGSA+OLeTOW44/nv+B4Zty5kVybgCV4AxkTQu3YyPL9u6FO\nKxvDlYlg+I5M+X3lnes=\n-----END CERTIFICATE-----\n'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Carpeta temporal creada: C:\Users\rkale\AppData\Local\Temp\tmp7yom7kzo
+INFO:root:Archivo copiado a: C:\Users\rkale\AppData\Local\Temp\tmp7yom7kzo\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:No se encontró el marcador para firmar en el documento.
+INFO:root:Convertido a PDF: C:\Users\rkale\AppData\Local\Temp\tmp7yom7kzo\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: C:\Users\rkale\AppData\Local\Temp\tmp7yom7kzo\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Error al firmar digitalmente: [Errno 2] No such file or directory: b'-----BEGIN CERTIFICATE-----\nMIIDCjCCAfKgAwIBAgIUTO5lFqWSCdAxHv1X5CwS3Z+E26QwDQYJKoZIhvcNAQEL\nBQAwPzETMBEGA1UEAwwKUmVjZXBjacOzbjEoMCYGCSqGSIb3DQEJARYZcmVjZXBj\naW9uQGNhc2Ftb25hcmNhLm9yZzAeFw0yNTA1MjUyMTI4MTFaFw0yNjA1MjUyMTI4\nMTFaMD8xEzARBgNVBAMMClJlY2VwY2nDs24xKDAmBgkqhkiG9w0BCQEWGXJlY2Vw\nY2lvbkBjYXNhbW9uYXJjYS5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK\nAoIBAQC8BlzgmYrvgHsOzsSDSnUv388aq7Pja8yGF4dBArvfxl2ipHHiT6I3w2gw\nQ10eq/QSXOZM4a1EI4TqxhbXDOj/5Ua6u/QfXvb640nCd6JuyomHkVH0r0Z7S2SG\nJryGHVv4IFpWYkPceJM9dHH5YvQiBtbccEiuWPgbYLWCIUappI1cYrgdl6H43GiW\nrX96FH5v25zR0/xB2J97BIgcRF9q6b6YH9SnLFvdaCK1FvHqP8K9+1OR4kRyA5sZ\nbIrIT7xMjUTo/zxssG3IKclRQuKNIJsZDy3Gh2lTIltLTDKOm4uu0oECTUq0kSiI\nnEaeKVdjBaKyHfHQnM0A8zMC2sqzAgMBAAEwDQYJKoZIhvcNAQELBQADggEBALsp\nJl+MwtZAjWM4VDKD7tSRLb+mCmCQF8JdfrMqWCjrUzh7HxX/hIcdqlZt9EE6kUsZ\nw/iB1/Ot+R6Rho0pq3g7JrGEizEKhSA1dP4hEjrrAXpQzUxaWYM3mespFrzdkNRx\nh0xdOP4Zz6ol3KrUCnykbaR1E3AfvtjSK3m6UhpVirbADzhm8WQxAoEcA/8G3r+t\nZkkzsLqRv93f2PNJ8dnrAuyYdrfky1Y9J5GZla2Bz+XfLqtPkcWPxirKbpgXAggi\niUEe+q+kmjf+95mm0FGSA+OLeTOW44/nv+B4Zty5kVybgCV4AxkTQu3YyPL9u6FO\nKxvDlYlg+I5M+X3lnes=\n-----END CERTIFICATE-----\n'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Carpeta temporal creada: C:\Users\rkale\AppData\Local\Temp\tmpm_m1a9b1
+INFO:root:Archivo copiado a: C:\Users\rkale\AppData\Local\Temp\tmpm_m1a9b1\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:No se encontró el marcador para firmar en el documento.
+INFO:root:Convertido a PDF: C:\Users\rkale\AppData\Local\Temp\tmpm_m1a9b1\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: C:\Users\rkale\AppData\Local\Temp\tmpm_m1a9b1\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Error al firmar digitalmente: expected str, bytes or os.PathLike object, not BufferedReader
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Carpeta temporal creada: C:\Users\rkale\AppData\Local\Temp\tmpp4l_f_3b
+INFO:root:Archivo copiado a: C:\Users\rkale\AppData\Local\Temp\tmpp4l_f_3b\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:No se encontró el marcador para firmar en el documento.
+INFO:root:Convertido a PDF: C:\Users\rkale\AppData\Local\Temp\tmpp4l_f_3b\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: C:\Users\rkale\AppData\Local\Temp\tmpp4l_f_3b\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Error al firmar digitalmente: module 'pyhanko.sign.signers' has no attribute 'SimpleCertificateStore'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Carpeta temporal creada: C:\Users\rkale\AppData\Local\Temp\tmpts978hx_
+INFO:root:Archivo copiado a: C:\Users\rkale\AppData\Local\Temp\tmpts978hx_\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:No se encontró el marcador para firmar en el documento.
+INFO:root:Convertido a PDF: C:\Users\rkale\AppData\Local\Temp\tmpts978hx_\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: C:\Users\rkale\AppData\Local\Temp\tmpts978hx_\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Error al firmar digitalmente: SimpleSigner.__init__() missing 1 required positional argument: 'cert_registry'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Carpeta temporal creada: C:\Users\rkale\AppData\Local\Temp\tmpsjmnn4bs
+INFO:root:Archivo copiado a: C:\Users\rkale\AppData\Local\Temp\tmpsjmnn4bs\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:No se encontró el marcador para firmar en el documento.
+INFO:root:Convertido a PDF: C:\Users\rkale\AppData\Local\Temp\tmpsjmnn4bs\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: C:\Users\rkale\AppData\Local\Temp\tmpsjmnn4bs\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Error al firmar digitalmente: SimpleSigner.__init__() missing 1 required positional argument: 'cert_registry'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Carpeta temporal creada: C:\Users\rkale\AppData\Local\Temp\tmpkd5ajyzx
+INFO:root:Archivo copiado a: C:\Users\rkale\AppData\Local\Temp\tmpkd5ajyzx\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:No se encontró el marcador para firmar en el documento.
+INFO:root:Convertido a PDF: C:\Users\rkale\AppData\Local\Temp\tmpkd5ajyzx\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: C:\Users\rkale\AppData\Local\Temp\tmpkd5ajyzx\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Error al firmar digitalmente: module 'pyhanko.sign.signers' has no attribute 'SimpleCertificateStore'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Carpeta temporal creada: C:\Users\rkale\AppData\Local\Temp\tmpvl_i0z27
+INFO:root:Archivo copiado a: C:\Users\rkale\AppData\Local\Temp\tmpvl_i0z27\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:No se encontró el marcador para firmar en el documento.
+INFO:root:Convertido a PDF: C:\Users\rkale\AppData\Local\Temp\tmpvl_i0z27\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: C:\Users\rkale\AppData\Local\Temp\tmpvl_i0z27\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Error al firmar digitalmente: asyncio.run() cannot be called from a running event loop
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Carpeta temporal creada: C:\Users\rkale\AppData\Local\Temp\tmpisf9x6ah
+INFO:root:Archivo copiado a: C:\Users\rkale\AppData\Local\Temp\tmpisf9x6ah\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:No se encontró el marcador para firmar en el documento.
+INFO:root:Convertido a PDF: C:\Users\rkale\AppData\Local\Temp\tmpisf9x6ah\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: C:\Users\rkale\AppData\Local\Temp\tmpisf9x6ah\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Error al firmar digitalmente: ('Could not deserialize key data. The data may be in an incorrect format, the provided password may be incorrect, it may be encrypted with an unsupported algorithm, or it may be an unsupported key type (e.g. EC curves with explicit parameters).', [<OpenSSLError(code=478150756, lib=57, reason=100, reason_text=bad decrypt)>, <OpenSSLError(code=293601396, lib=35, reason=116, reason_text=pkcs12 cipherfinal error)>, <OpenSSLError(code=478150756, lib=57, reason=100, reason_text=bad decrypt)>, <OpenSSLError(code=293601396, lib=35, reason=116, reason_text=pkcs12 cipherfinal error)>])
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Carpeta temporal creada: C:\Users\rkale\AppData\Local\Temp\tmp2ile34pz
+INFO:root:Archivo copiado a: C:\Users\rkale\AppData\Local\Temp\tmp2ile34pz\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:No se encontró el marcador para firmar en el documento.
+INFO:root:Convertido a PDF: C:\Users\rkale\AppData\Local\Temp\tmp2ile34pz\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: C:\Users\rkale\AppData\Local\Temp\tmp2ile34pz\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Error al firmar digitalmente: asyncio.run() cannot be called from a running event loop
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Carpeta temporal creada: C:\Users\rkale\AppData\Local\Temp\tmpszripld8
+INFO:root:Archivo copiado a: C:\Users\rkale\AppData\Local\Temp\tmpszripld8\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:No se encontró el marcador para firmar en el documento.
+INFO:root:Convertido a PDF: C:\Users\rkale\AppData\Local\Temp\tmpszripld8\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: C:\Users\rkale\AppData\Local\Temp\tmpszripld8\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:PDF firmado digitalmente: C:\Users\rkale\AppData\Local\Temp\tmpszripld8\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:PDF firmado copiado a: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=b667ee07-74f5-4beb-8543-0cc82c2b2a43, user_id=3, rol=reception
+ERROR:asyncio:Future exception was never retrieved
+future: <Future finished exception=AttributeError("'_io.BufferedReader' object has no attribute 'root'")>
+Traceback (most recent call last):
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\OneDrive\Documentos\VStudio\CasaMonarcaFirmasLocal\CasaMonarcaFirmasLocal\logica_python\parafirmar\flujo_documentos.py", line 102, in _firmar_pdf_sync
+    signers.sign_pdf(
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\functions.py", line 82, in sign_pdf
+    return pdf_signer.sign_pdf(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1528, in sign_pdf
+    result = asyncio.run(
+             ^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1586, in async_sign_pdf
+    signing_session = self.init_signing_session(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1267, in init_signing_session
+    sig_field_ref = next(cms_writer)
+                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 450, in write_cms
+    field_created, sig_field_ref = _get_or_create_sigfield(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 84, in _get_or_create_sigfield
+    root = pdf_out.root
+           ^^^^^^^^^^^^
+AttributeError: '_io.BufferedReader' object has no attribute 'root'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:No se encontró el marcador para firmar en el documento.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=b667ee07-74f5-4beb-8543-0cc82c2b2a43, user_id=3, rol=reception
+ERROR:asyncio:Future exception was never retrieved
+future: <Future finished exception=AttributeError("'_io.BufferedReader' object has no attribute 'root'")>
+Traceback (most recent call last):
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\OneDrive\Documentos\VStudio\CasaMonarcaFirmasLocal\CasaMonarcaFirmasLocal\logica_python\parafirmar\flujo_documentos.py", line 102, in _firmar_pdf_sync
+    signers.sign_pdf(
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\functions.py", line 82, in sign_pdf
+    return pdf_signer.sign_pdf(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1528, in sign_pdf
+    result = asyncio.run(
+             ^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1586, in async_sign_pdf
+    signing_session = self.init_signing_session(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1267, in init_signing_session
+    sig_field_ref = next(cms_writer)
+                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 450, in write_cms
+    field_created, sig_field_ref = _get_or_create_sigfield(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 84, in _get_or_create_sigfield
+    root = pdf_out.root
+           ^^^^^^^^^^^^
+AttributeError: '_io.BufferedReader' object has no attribute 'root'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:No se encontró el marcador para firmar en el documento.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=b667ee07-74f5-4beb-8543-0cc82c2b2a43, user_id=3, rol=reception
+ERROR:asyncio:Future exception was never retrieved
+future: <Future finished exception=AttributeError("'_io.BufferedReader' object has no attribute 'root'")>
+Traceback (most recent call last):
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\OneDrive\Documentos\VStudio\CasaMonarcaFirmasLocal\CasaMonarcaFirmasLocal\logica_python\parafirmar\flujo_documentos.py", line 119, in _firmar_pdf_sync
+    signers.sign_pdf(
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\functions.py", line 82, in sign_pdf
+    return pdf_signer.sign_pdf(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1528, in sign_pdf
+    result = asyncio.run(
+             ^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1586, in async_sign_pdf
+    signing_session = self.init_signing_session(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1267, in init_signing_session
+    sig_field_ref = next(cms_writer)
+                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 450, in write_cms
+    field_created, sig_field_ref = _get_or_create_sigfield(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 84, in _get_or_create_sigfield
+    root = pdf_out.root
+           ^^^^^^^^^^^^
+AttributeError: '_io.BufferedReader' object has no attribute 'root'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=b667ee07-74f5-4beb-8543-0cc82c2b2a43, user_id=3, rol=reception
+ERROR:asyncio:Future exception was never retrieved
+future: <Future finished exception=AttributeError("'_io.BufferedReader' object has no attribute 'root'")>
+Traceback (most recent call last):
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\OneDrive\Documentos\VStudio\CasaMonarcaFirmasLocal\CasaMonarcaFirmasLocal\logica_python\parafirmar\flujo_documentos.py", line 126, in _firmar_pdf_sync
+    signers.sign_pdf(
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\functions.py", line 82, in sign_pdf
+    return pdf_signer.sign_pdf(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1528, in sign_pdf
+    result = asyncio.run(
+             ^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1586, in async_sign_pdf
+    signing_session = self.init_signing_session(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1267, in init_signing_session
+    sig_field_ref = next(cms_writer)
+                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 450, in write_cms
+    field_created, sig_field_ref = _get_or_create_sigfield(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 84, in _get_or_create_sigfield
+    root = pdf_out.root
+           ^^^^^^^^^^^^
+AttributeError: '_io.BufferedReader' object has no attribute 'root'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=341a23ff-1676-4a20-beeb-d8a370272856, user_id=3, rol=reception
+ERROR:asyncio:Future exception was never retrieved
+future: <Future finished exception=AttributeError("'_io.BufferedReader' object has no attribute 'root'")>
+Traceback (most recent call last):
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\OneDrive\Documentos\VStudio\CasaMonarcaFirmasLocal\CasaMonarcaFirmasLocal\logica_python\parafirmar\flujo_documentos.py", line 132, in _firmar_pdf_sync
+    signers.sign_pdf(
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\functions.py", line 82, in sign_pdf
+    return pdf_signer.sign_pdf(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1528, in sign_pdf
+    result = asyncio.run(
+             ^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1586, in async_sign_pdf
+    signing_session = self.init_signing_session(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1267, in init_signing_session
+    sig_field_ref = next(cms_writer)
+                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 450, in write_cms
+    field_created, sig_field_ref = _get_or_create_sigfield(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 84, in _get_or_create_sigfield
+    root = pdf_out.root
+           ^^^^^^^^^^^^
+AttributeError: '_io.BufferedReader' object has no attribute 'root'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '5916d1d8-d4e0-4a8b-b153-87c53aaec8ca', 'title': 'Donación especie 5916d1d8-d4e0-4a8b-b153-87c53aaec8ca', 'sharepoint_url': 'SharePoint/Donaciones/doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=5916d1d8-d4e0-4a8b-b153-87c53aaec8ca, user_id=3, rol=reception
+ERROR:asyncio:Future exception was never retrieved
+future: <Future finished exception=AttributeError("'_io.BufferedReader' object has no attribute 'root'")>
+Traceback (most recent call last):
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\OneDrive\Documentos\VStudio\CasaMonarcaFirmasLocal\CasaMonarcaFirmasLocal\logica_python\parafirmar\flujo_documentos.py", line 139, in _firmar_pdf_sync
+    signers.sign_pdf(
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\functions.py", line 82, in sign_pdf
+    return pdf_signer.sign_pdf(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1528, in sign_pdf
+    result = asyncio.run(
+             ^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1586, in async_sign_pdf
+    signing_session = self.init_signing_session(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1267, in init_signing_session
+    sig_field_ref = next(cms_writer)
+                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 450, in write_cms
+    field_created, sig_field_ref = _get_or_create_sigfield(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 84, in _get_or_create_sigfield
+    root = pdf_out.root
+           ^^^^^^^^^^^^
+AttributeError: '_io.BufferedReader' object has no attribute 'root'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '2286a30b-c175-4a63-94fc-4f3c54931b5b', 'title': 'Donación especie 2286a30b-c175-4a63-94fc-4f3c54931b5b', 'sharepoint_url': 'SharePoint/Donaciones/doc_2286a30b-c175-4a63-94fc-4f3c54931b5b.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_2286a30b-c175-4a63-94fc-4f3c54931b5b.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_2286a30b-c175-4a63-94fc-4f3c54931b5b_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_2286a30b-c175-4a63-94fc-4f3c54931b5b_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_2286a30b-c175-4a63-94fc-4f3c54931b5b_firmado.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=2286a30b-c175-4a63-94fc-4f3c54931b5b, user_id=3, rol=reception
+ERROR:asyncio:Future exception was never retrieved
+future: <Future finished exception=AttributeError("'_io.BufferedReader' object has no attribute 'root'")>
+Traceback (most recent call last):
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\OneDrive\Documentos\VStudio\CasaMonarcaFirmasLocal\CasaMonarcaFirmasLocal\logica_python\parafirmar\flujo_documentos.py", line 136, in _firmar_pdf_sync
+    signers.sign_pdf(
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\functions.py", line 82, in sign_pdf
+    return pdf_signer.sign_pdf(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1528, in sign_pdf
+    result = asyncio.run(
+             ^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1586, in async_sign_pdf
+    signing_session = self.init_signing_session(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1267, in init_signing_session
+    sig_field_ref = next(cms_writer)
+                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 450, in write_cms
+    field_created, sig_field_ref = _get_or_create_sigfield(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 84, in _get_or_create_sigfield
+    root = pdf_out.root
+           ^^^^^^^^^^^^
+AttributeError: '_io.BufferedReader' object has no attribute 'root'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '5916d1d8-d4e0-4a8b-b153-87c53aaec8ca', 'title': 'Donación especie 5916d1d8-d4e0-4a8b-b153-87c53aaec8ca', 'sharepoint_url': 'SharePoint/Donaciones/doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=5916d1d8-d4e0-4a8b-b153-87c53aaec8ca, user_id=3, rol=reception
+ERROR:asyncio:Future exception was never retrieved
+future: <Future finished exception=AttributeError("'_io.BufferedReader' object has no attribute 'root'")>
+Traceback (most recent call last):
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\OneDrive\Documentos\VStudio\CasaMonarcaFirmasLocal\CasaMonarcaFirmasLocal\logica_python\parafirmar\flujo_documentos.py", line 136, in _firmar_pdf_sync
+    signers.sign_pdf(
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\functions.py", line 82, in sign_pdf
+    return pdf_signer.sign_pdf(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1528, in sign_pdf
+    result = asyncio.run(
+             ^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1586, in async_sign_pdf
+    signing_session = self.init_signing_session(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1267, in init_signing_session
+    sig_field_ref = next(cms_writer)
+                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 450, in write_cms
+    field_created, sig_field_ref = _get_or_create_sigfield(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 84, in _get_or_create_sigfield
+    root = pdf_out.root
+           ^^^^^^^^^^^^
+AttributeError: '_io.BufferedReader' object has no attribute 'root'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Error al firmar digitalmente: This event loop is already running
+ERROR:asyncio:Future exception was never retrieved
+future: <Future finished exception=AttributeError("'_io.BufferedReader' object has no attribute 'root'")>
+Traceback (most recent call last):
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\OneDrive\Documentos\VStudio\CasaMonarcaFirmasLocal\CasaMonarcaFirmasLocal\logica_python\parafirmar\flujo_documentos.py", line 136, in _firmar_pdf_sync
+    signers.sign_pdf(
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\functions.py", line 82, in sign_pdf
+    return pdf_signer.sign_pdf(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1528, in sign_pdf
+    result = asyncio.run(
+             ^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\asyncio\base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1586, in async_sign_pdf
+    signing_session = self.init_signing_session(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\pdf_signer.py", line 1267, in init_signing_session
+    sig_field_ref = next(cms_writer)
+                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 450, in write_cms
+    field_created, sig_field_ref = _get_or_create_sigfield(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rkale\miniconda3\envs\casa\Lib\site-packages\pyhanko\sign\signers\cms_embedder.py", line 84, in _get_or_create_sigfield
+    root = pdf_out.root
+           ^^^^^^^^^^^^
+AttributeError: '_io.BufferedReader' object has no attribute 'root'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=341a23ff-1676-4a20-beeb-d8a370272856, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Error al firmar digitalmente: No module named 'nest_asyncio'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Error al firmar PDF: '_io.BufferedReader' object has no attribute 'root'
+INFO:root:Error al firmar digitalmente: '_io.BufferedReader' object has no attribute 'root'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=b667ee07-74f5-4beb-8543-0cc82c2b2a43, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=341a23ff-1676-4a20-beeb-d8a370272856, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Campo de firma agregado: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado_firmado_campo.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado_firmado_campo.pdf
+INFO:root:Error al firmar PDF: '_io.BufferedReader' object has no attribute 'root'
+INFO:root:Error al firmar digitalmente: '_io.BufferedReader' object has no attribute 'root'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=341a23ff-1676-4a20-beeb-d8a370272856, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=341a23ff-1676-4a20-beeb-d8a370272856, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:ERROR FLUJO: This event loop is already running
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Error al firmar digitalmente: ('Could not deserialize key data. The data may be in an incorrect format, the provided password may be incorrect, it may be encrypted with an unsupported algorithm, or it may be an unsupported key type (e.g. EC curves with explicit parameters).', [<OpenSSLError(code=478150756, lib=57, reason=100, reason_text=bad decrypt)>, <OpenSSLError(code=293601396, lib=35, reason=116, reason_text=pkcs12 cipherfinal error)>, <OpenSSLError(code=478150756, lib=57, reason=100, reason_text=bad decrypt)>, <OpenSSLError(code=293601396, lib=35, reason=116, reason_text=pkcs12 cipherfinal error)>])
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Error al firmar PDF: asyncio.run() cannot be called from a running event loop
+INFO:root:Error al firmar digitalmente: asyncio.run() cannot be called from a running event loop
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Error al firmar digitalmente: asyncio.run() cannot be called from a running event loop
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Error al firmar digitalmente: type object 'SimpleSigner' has no attribute 'load_async'
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Error al firmar digitalmente: Attempting to sign document with hybrid cross-reference sections while hybrid xrefs are disabled
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '341a23ff-1676-4a20-beeb-d8a370272856', 'title': 'Donación especie 341a23ff-1676-4a20-beeb-d8a370272856', 'sharepoint_url': 'SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_341a23ff-1676-4a20-beeb-d8a370272856.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_341a23ff-1676-4a20-beeb-d8a370272856_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=341a23ff-1676-4a20-beeb-d8a370272856, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '5916d1d8-d4e0-4a8b-b153-87c53aaec8ca', 'title': 'Donación especie 5916d1d8-d4e0-4a8b-b153-87c53aaec8ca', 'sharepoint_url': 'SharePoint/Donaciones/doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=5916d1d8-d4e0-4a8b-b153-87c53aaec8ca, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'c164aace-373f-4511-ad2d-98560100e500', 'title': 'Donación dinero c164aace-373f-4511-ad2d-98560100e500', 'sharepoint_url': 'SharePoint/Donaciones/doc_c164aace-373f-4511-ad2d-98560100e500.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_c164aace-373f-4511-ad2d-98560100e500.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_c164aace-373f-4511-ad2d-98560100e500_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_c164aace-373f-4511-ad2d-98560100e500_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_c164aace-373f-4511-ad2d-98560100e500_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=c164aace-373f-4511-ad2d-98560100e500, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '2286a30b-c175-4a63-94fc-4f3c54931b5b', 'title': 'Donación especie 2286a30b-c175-4a63-94fc-4f3c54931b5b', 'sharepoint_url': 'SharePoint/Donaciones/doc_2286a30b-c175-4a63-94fc-4f3c54931b5b.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_2286a30b-c175-4a63-94fc-4f3c54931b5b.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_2286a30b-c175-4a63-94fc-4f3c54931b5b_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_2286a30b-c175-4a63-94fc-4f3c54931b5b_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_2286a30b-c175-4a63-94fc-4f3c54931b5b_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=2286a30b-c175-4a63-94fc-4f3c54931b5b, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '5916d1d8-d4e0-4a8b-b153-87c53aaec8ca', 'title': 'Donación especie 5916d1d8-d4e0-4a8b-b153-87c53aaec8ca', 'sharepoint_url': 'SharePoint/Donaciones/doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_5916d1d8-d4e0-4a8b-b153-87c53aaec8ca_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=5916d1d8-d4e0-4a8b-b153-87c53aaec8ca, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'title': 'Donación dinero b667ee07-74f5-4beb-8543-0cc82c2b2a43', 'sharepoint_url': 'SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_b667ee07-74f5-4beb-8543-0cc82c2b2a43_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=b667ee07-74f5-4beb-8543-0cc82c2b2a43, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '68aaabe2-e15c-4229-8b39-0f4416491cbe', 'title': 'Donación dinero 68aaabe2-e15c-4229-8b39-0f4416491cbe', 'sharepoint_url': 'SharePoint/Donaciones/doc_68aaabe2-e15c-4229-8b39-0f4416491cbe.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_68aaabe2-e15c-4229-8b39-0f4416491cbe.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_68aaabe2-e15c-4229-8b39-0f4416491cbe_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_68aaabe2-e15c-4229-8b39-0f4416491cbe_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_68aaabe2-e15c-4229-8b39-0f4416491cbe_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=68aaabe2-e15c-4229-8b39-0f4416491cbe, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 2, 'name': 'Finanzas', 'role': 'finance', 'email': 'finanzas@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '20b0a996-1362-4ce2-90df-02efc73a9057', 'title': 'Donación dinero 20b0a996-1362-4ce2-90df-02efc73a9057', 'sharepoint_url': 'SharePoint/Donaciones/doc_20b0a996-1362-4ce2-90df-02efc73a9057.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_20b0a996-1362-4ce2-90df-02efc73a9057.docx
+INFO:root:Firma no encontrada: Firma no encontrada para finanzas@casamonarca.org
+INFO:root:Usuario encontrado: {'user_id': 2, 'name': 'Finanzas', 'role': 'finance', 'email': 'finanzas@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '20b0a996-1362-4ce2-90df-02efc73a9057', 'title': 'Donación dinero 20b0a996-1362-4ce2-90df-02efc73a9057', 'sharepoint_url': 'SharePoint/Donaciones/doc_20b0a996-1362-4ce2-90df-02efc73a9057.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_20b0a996-1362-4ce2-90df-02efc73a9057.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_20b0a996-1362-4ce2-90df-02efc73a9057_firmado.pdf
+INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_20b0a996-1362-4ce2-90df-02efc73a9057_firmado.pdf
+INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_20b0a996-1362-4ce2-90df-02efc73a9057_firmado_digital.pdf
+INFO:root:Flujo de firmas actualizado para doc_id=20b0a996-1362-4ce2-90df-02efc73a9057, user_id=2, rol=finance

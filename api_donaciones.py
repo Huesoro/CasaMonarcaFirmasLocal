@@ -2,7 +2,6 @@ from fastapi import FastAPI, Request, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from logica_python.crearDoc.flujo_crearDonacion import crear_donacion
 from logica_python.CrearNuevoUser.crearUser import crear_usuario
-from app.api.documents.sign import router as sign_router
 from app.api.documents.download import router as download_router
 from app.api.documents.route import router as documents_router
 import hashlib
@@ -27,7 +26,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(sign_router, prefix="/api")
 app.include_router(download_router, prefix="/api")
 app.include_router(documents_router, prefix="/api")
 
@@ -92,11 +90,14 @@ async def api_login(request: Request):
 
 @app.get("/api/historial-donaciones")
 async def api_historial_donaciones():
-    # Obtener documentos
     documentos = get_all_documents()
-    # Obtener donaciones de dinero e insumos
     donaciones_dinero = get_all_donaciones_dinero()
     donaciones_insumos = get_all_donaciones_insumos()
+    
+    # Obtener estados de firma
+    conn_firmas = sqlite3.connect('Azure_SQL/firmas.db')
+    cursor_firmas = conn_firmas.cursor()
+    
     # Crear índices para acceso rápido
     dinero_por_doc = {d["doc_id"]: d for d in donaciones_dinero}
     insumos_por_doc = {d["doc_id"]: d for d in donaciones_insumos}
@@ -113,21 +114,33 @@ async def api_historial_donaciones():
     finally:
         if 'conn' in locals():
             conn.close()
-    # Construir historial
+    
     historial = []
     for doc in documentos:
+        # Obtener el estado de firma actual
+        cursor_firmas.execute("""
+            SELECT status 
+            FROM firmas_documento 
+            WHERE doc_id = ? 
+            ORDER BY orden DESC LIMIT 1
+        """, (doc["doc_id"],))
+        firma_status = cursor_firmas.fetchone()
+        
         tipo = "money" if doc["Type"] == "dinero" else "supplies"
         donacion = dinero_por_doc.get(doc["doc_id"]) if tipo == "money" else insumos_por_doc.get(doc["doc_id"]) 
+        
         historial.append({
             "id": f"don-{doc['doc_id']}",
             "title": doc["title"],
             "type": tipo,
             "date": doc["created_at"],
-            "status": "completed" if doc["status"] == "signed" else doc["status"],
+            "status": firma_status[0] if firma_status else "pendiente",  # Usar el estado real de firma
             "amount": donacion["amount"] if tipo == "money" and donacion else None,
             "items": donacion["objeto"] if tipo == "supplies" and donacion else None,
             "donor": usuarios.get(doc["user_id"], "Desconocido")
         })
+    
+    conn_firmas.close()
     return {"donaciones": historial}
 
 @app.post("/api/documentos/firmar")
@@ -138,9 +151,12 @@ async def api_firmar_documento(request: Request):
         user_id = data.get("user_id")
         rol = data.get("role")
         password_firma = data.get("password_firma")
+        print("PASSWORD FIRMA:", password_firma)
         if not password_firma:
             return {"status": "error", "message": "Se requiere la contraseña de firma"}
-        resultado = flujo_documento(user_id, doc_id, password_firma, rol=rol)
+        from logica_python.parafirmar.flujo_documentos import flujo_documento
+        resultado = await flujo_documento(user_id, doc_id, password_firma, rol=rol)
+        print("RESULTADO FLUJO:", resultado)
         return resultado
     except Exception as e:
         # Loguea el error en la raíz del proyecto
@@ -150,66 +166,66 @@ async def api_firmar_documento(request: Request):
 
 @app.get("/api/documentos/pendientes")
 async def api_documentos_pendientes(user_id: int, rol: str):
-    doc_ids = get_documentos_para_firmar(user_id, rol)
-    if not doc_ids:
-        return {"documentos": []}
-    placeholders = ','.join(['?'] * len(doc_ids))
-    conn = sqlite3.connect('Azure_SQL/Documentos.db')
-    cursor = conn.cursor()
-    query = f"""
-        SELECT d.doc_id, d.title, d.sharepoint_url, d.Type, d.status, d.user_id, d.created_at, d.updated_at
-        FROM documentos d
-        WHERE d.doc_id IN ({placeholders})
-    """
-    cursor.execute(query, doc_ids)
-    rows = cursor.fetchall()
-    documentos = []
-    # Abre la otra base para obtener los nombres de usuario
-    conn_users = sqlite3.connect('Azure_SQL/Usuarios.db')
-    cursor_users = conn_users.cursor()
-    for row in rows:
-        user_id = row[5]
-        cursor_users.execute("SELECT name FROM usuarios WHERE user_id = ?", (user_id,))
-        user_row = cursor_users.fetchone()
-        creador_nombre = user_row[0] if user_row else "Desconocido"
-        documentos.append({
-            "doc_id": row[0],
-            "title": row[1],
-            "sharepoint_url": row[2],
-            "Type": row[3],
-            "status": row[4],
-            "user_id": row[5],
-            "created_at": row[6],
-            "updated_at": row[7],
-            "creador_nombre": creador_nombre
-        })
-    conn.close()
-    conn_users.close()
-    return {"documentos": documentos}
+    try:
+        # Obtener los documentos pendientes
+        docs = get_documentos_para_firmar(user_id, rol)
+        
+        # Si no hay documentos, retornar lista vacía
+        if not docs:
+            return {"documentos": []}
+            
+        # Obtener los nombres de los creadores
+        conn_users = sqlite3.connect('Azure_SQL/Usuarios.db')
+        cursor_users = conn_users.cursor()
+        
+        # Agregar el nombre del creador a cada documento
+        for doc in docs:
+            if doc.get("user_id"):
+                cursor_users.execute("SELECT name FROM usuarios WHERE user_id = ?", (doc["user_id"],))
+                user_row = cursor_users.fetchone()
+                doc["creador_nombre"] = user_row[0] if user_row else "Desconocido"
+            else:
+                doc["creador_nombre"] = "Desconocido"
+        
+        conn_users.close()
+        return {"documentos": docs}
+        
+    except Exception as e:
+        print(f"Error en api_documentos_pendientes: {e}")
+        return {"status": "error", "message": str(e)}
 
 @app.get("/api/documentos/firmas/{doc_id}")
-async def api_firmas_documento(doc_id: int):
+async def api_firmas_documento(doc_id: str):
     conn = sqlite3.connect('Azure_SQL/Firmas.db')
     cursor = conn.cursor()
     query = """
-        SELECT f.orden, f.rol, f.status, f.fecha_firma, u.name
-        FROM firmas_documento f
-        LEFT JOIN ../Usuarios.db.u u ON f.user_id = u.user_id
-        WHERE f.doc_id = ?
-        ORDER BY f.orden ASC
+        SELECT orden, rol, status, fecha_firma, user_id
+        FROM firmas_documento
+        WHERE doc_id = ?
+        ORDER BY orden ASC
     """
     cursor.execute(query, (doc_id,))
     rows = cursor.fetchall()
     firmas = []
+    # Abre la otra base para obtener los nombres de usuario
+    conn_users = sqlite3.connect('Azure_SQL/Usuarios.db')
+    cursor_users = conn_users.cursor()
     for row in rows:
+        user_id = row[4]
+        nombre = None
+        if user_id:
+            cursor_users.execute("SELECT name FROM usuarios WHERE user_id = ?", (user_id,))
+            user_row = cursor_users.fetchone()
+            nombre = user_row[0] if user_row else None
         firmas.append({
             "orden": row[0],
             "rol": row[1],
             "status": row[2],
             "fecha_firma": row[3],
-            "nombre": row[4]
+            "nombre": nombre
         })
     conn.close()
+    conn_users.close()
     return {"firmas": firmas}
 
 @app.post("/api/upload-firma")
