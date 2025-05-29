@@ -13,6 +13,8 @@ from Azure_SQL.conectBases import (
 )
 import shutil
 import os
+from logica_python.parafirmar.flujo_documentos import flujo_documento
+import datetime
 
 app = FastAPI()
 
@@ -130,12 +132,21 @@ async def api_historial_donaciones():
 
 @app.post("/api/documentos/firmar")
 async def api_firmar_documento(request: Request):
-    data = await request.json()
-    doc_id = data.get("doc_id")
-    user_id = data.get("user_id")
-    rol = data.get("role")
-    firmar_documento(doc_id, user_id, rol)
-    return {"status": "success", "message": "Documento firmado"}
+    try:
+        data = await request.json()
+        doc_id = data.get("doc_id")
+        user_id = data.get("user_id")
+        rol = data.get("role")
+        password_firma = data.get("password_firma")
+        if not password_firma:
+            return {"status": "error", "message": "Se requiere la contraseña de firma"}
+        resultado = flujo_documento(user_id, doc_id, password_firma, rol=rol)
+        return resultado
+    except Exception as e:
+        # Loguea el error en la raíz del proyecto
+        with open('log_firmas.txt', 'a', encoding='utf-8') as f:
+            f.write(f"[{datetime.datetime.now()}] ERROR API: {e}\n")
+        return {"status": "error", "message": f"Error inesperado en el API: {e}"}
 
 @app.get("/api/documentos/pendientes")
 async def api_documentos_pendientes(user_id: int, rol: str):
@@ -216,3 +227,4 @@ async def upload_firma(firma: UploadFile = File(...), email: str = Form(...)):
         return {"status": "success", "filename": nombre_archivo}
     except Exception as e:
         return {"status": "error", "message": str(e)}
+ 

@@ -116,7 +116,7 @@ export default function Documents() {
       const data = await res.json()
       if (data.status === "success") {
         toast({ title: "Documento firmado", description: "El documento ha sido firmado exitosamente." })
-        setIsDialogOpen(false)
+      setIsDialogOpen(false)
         fetchDocuments(activeTab)
       } else {
         toast({ title: "Error", description: data.message || "No se pudo firmar el documento.", variant: "destructive" })

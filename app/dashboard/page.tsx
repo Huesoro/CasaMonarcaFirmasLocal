@@ -26,13 +26,13 @@ export default function Dashboard() {
         href: "/documents",
         roles: ["finance", "legal", "executive", "admin"],
       },
-      {
+      /*{
         title: "Historial de Donaciones",
         description: "Consulta el registro histórico de donaciones",
         icon: <History className="h-6 w-6" />,
         href: "/history",
         roles: ["finance", "reception", "legal", "executive", "admin"],
-      },
+      },*/
       {
         title: "Reportes",
         description: "Visualiza reportes y estadísticas",
@@ -81,7 +81,7 @@ export default function Dashboard() {
         ))}
       </div>
 
-      <Button onClick={logout} className="mt-4 w-full">Cerrar sesión</Button>
+      {/*<Button onClick={logout} className="mt-4 w-full">Cerrar sesión</Button>*/}
     </div>
   )
 }
