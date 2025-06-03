@@ -8,19 +8,19 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
-import { Search, Download, FileText, Filter } from "lucide-react"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Search, Download, Filter } from "lucide-react"
 
 function parseFilename(name: string) {
   const baseName = name.replace(".docx", "")
   const parts = baseName.split("_")
+  const rawType = parts[3]?.toLowerCase() || "otro"
+  const validType = ["monetaria", "insumos"].includes(rawType) ? rawType : null
 
   return {
     title: parts[0] || "Sin título",
     donor: parts[1] || "Desconocido",
     date: parts[2] || "Sin fecha",
-    type: parts[3] || "otro",
+    type: validType,
   }
 }
 
@@ -28,8 +28,7 @@ export default function History() {
   const { user } = useAuth()
   const [searchTerm, setSearchTerm] = useState("")
   const [typeFilter, setTypeFilter] = useState("all")
-  const [selectedDonation, setSelectedDonation] = useState<any>(null)
-  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [sortOrder, setSortOrder] = useState("desc") // NUEVO: orden por fecha
   const [donations, setDonations] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -44,7 +43,7 @@ export default function History() {
           return {
             ...meta,
             url: doc.url,
-            id: doc.name, // Usamos el nombre como ID
+            id: doc.name,
           }
         })
         setDonations(parsedDocs)
@@ -59,17 +58,27 @@ export default function History() {
 
   if (!user) return <div>Cargando...</div>
 
-  const filteredDonations = donations.filter((donation) => {
-    const search = searchTerm.toLowerCase()
-    const matchesSearch =
-      donation.title.toLowerCase().includes(search) ||
-      donation.donor.toLowerCase().includes(search) ||
-      donation.type.toLowerCase().includes(search)
+  const filteredDonations = donations
+    .filter((donation) => {
+      if (!["monetaria", "insumos"].includes(donation.type)) return false
 
-    const matchesType = typeFilter === "all" || donation.type === typeFilter
+      const search = searchTerm.toLowerCase()
+      const matchesSearch =
+        donation.title.toLowerCase().includes(search) ||
+        donation.donor.toLowerCase().includes(search) ||
+        donation.type.toLowerCase().includes(search)
 
-    return matchesSearch && matchesType
-  })
+      const matchesType = typeFilter === "all" || donation.type === typeFilter
+
+      return matchesSearch && matchesType
+    })
+    .sort((a, b) => {
+      const dateA = new Date(a.date)
+      const dateB = new Date(b.date)
+      return sortOrder === "asc"
+        ? dateA.getTime() - dateB.getTime()
+        : dateB.getTime() - dateA.getTime()
+    })
 
   return (
     <div className="container mx-auto px-4 py-10">
@@ -84,7 +93,8 @@ export default function History() {
           <CardDescription>Documentos leídos desde SharePoint/Historial</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="mb-6 flex flex-col gap-4 sm:flex-row">
+          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center">
+            {/* Filtro de búsqueda */}
             <div className="relative flex-1">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
@@ -94,6 +104,8 @@ export default function History() {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
+
+            {/* Filtro de tipo */}
             <Select value={typeFilter} onValueChange={setTypeFilter}>
               <SelectTrigger className="w-full sm:w-[180px]">
                 <div className="flex items-center">
@@ -103,9 +115,22 @@ export default function History() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">Todos los tipos</SelectItem>
-                <SelectItem value="money">Monetaria</SelectItem>
+                <SelectItem value="monetaria">Monetaria</SelectItem>
                 <SelectItem value="insumos">Insumos</SelectItem>
-                <SelectItem value="historial">Historial</SelectItem>
+              </SelectContent>
+            </Select>
+
+            {/* Filtro de orden */}
+            <Select value={sortOrder} onValueChange={setSortOrder}>
+              <SelectTrigger className="w-full sm:w-[200px]">
+                <div className="flex items-center">
+                  <Filter className="mr-2 h-4 w-4" />
+                  <SelectValue placeholder="Ordenar por fecha" />
+                </div>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="desc">Más recientes primero</SelectItem>
+                <SelectItem value="asc">Más antiguos primero</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -144,8 +169,8 @@ export default function History() {
                         <Badge variant="secondary">{donation.type}</Badge>
                       </TableCell>
                       <TableCell className="text-right">
-                        <a href={donation.url} target="_blank" className="text-blue-600 underline">
-                          Ver / Descargar
+                        <a href={donation.url} download className="text-blue-600 underline">
+                          Descargar
                         </a>
                       </TableCell>
                     </TableRow>
@@ -159,4 +184,5 @@ export default function History() {
     </div>
   )
 }
+
 
