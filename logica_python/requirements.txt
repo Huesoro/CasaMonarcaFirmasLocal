@@ -6,4 +6,5 @@ pyHanko
 docx2pdf
 python-multipart
 cryptography
+nest_asyncio
 ## Para instalar necesitas usar pip install -r requirements.txt
