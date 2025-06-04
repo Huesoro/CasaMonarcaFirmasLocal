@@ -7,12 +7,14 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export default function NewUser() {
   const { user } = useAuth()
   const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [firmaFile, setFirmaFile] = useState<File | null>(null)
+  const [selectedRole, setSelectedRole] = useState<string>("")
 
   // Solo admin puede acceder
   if (!user || user.role !== "admin") {
@@ -23,7 +25,6 @@ export default function NewUser() {
   const emailRef = useRef<HTMLInputElement>(null)
   const nameRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
-  const roleRef = useRef<HTMLInputElement>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -37,7 +38,7 @@ export default function NewUser() {
           email: emailRef.current?.value,
           nombre: nameRef.current?.value,
           password: passwordRef.current?.value,
-          role: roleRef.current?.value,
+          role: selectedRole,
         }),
       })
       const result = await res.json()
@@ -88,7 +89,18 @@ export default function NewUser() {
         </div>
         <div>
           <Label htmlFor="role">Rol</Label>
-          <Input id="role" required ref={roleRef} placeholder="admin, finance, reception, etc." />
+          <Select value={selectedRole} onValueChange={setSelectedRole}>
+            <SelectTrigger>
+              <SelectValue placeholder="Selecciona un rol" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="admin">Administrador</SelectItem>
+              <SelectItem value="finance">Finanzas</SelectItem>
+              <SelectItem value="reception">Recepción</SelectItem>
+              <SelectItem value="legal">Legal</SelectItem>
+              <SelectItem value="inventory">Inventario</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
         <div>
           <Label htmlFor="firma">Firma (imagen PNG/JPG)</Label>

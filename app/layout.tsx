@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { AuthProvider } from "@/hooks/use-auth"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import { Toaster } from "@/components/ui/toaster"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -28,6 +29,7 @@ export default function RootLayout({
               <Header />
               <main className="flex-1">{children}</main>
               <Footer />
+              <Toaster />
             </div>
           </AuthProvider>
         </ThemeProvider>

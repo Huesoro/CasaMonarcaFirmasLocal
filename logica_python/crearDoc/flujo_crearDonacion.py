@@ -66,7 +66,7 @@ def crear_donacion(datos, user_id):
     path_docx = rellenar_campos_docx(path_machote, datos, id_documento)
     
     # Obtener el nombre del donante
-    nombre_donante = datos.get("nombre_donante") or datos.get("{nombre_donante}", "Desconocido")
+    nombre_donante = datos.get("nombre_donante") or datos.get("{nombre_donante}", "Anonímo")
 
     # 4. Registrar el documento en la base de datos
     doc_data = {

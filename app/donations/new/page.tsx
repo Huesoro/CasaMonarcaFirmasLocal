@@ -55,7 +55,6 @@ export default function NewDonation() {
       let datos: any = {
         "{fecha_donacion}": donationDateRef.current?.value,
         "{nombre_donante}": donorNameRef.current?.value,
-        "{correo_donante}": donorEmailRef.current?.value,
       }
       if (donationType === "money") {
         datos["{monto_donado}"] = amountRef.current?.value
@@ -72,10 +71,13 @@ export default function NewDonation() {
       const result = await res.json()
       if (result.status === "success") {
         toast({
-          title: "Donación registrada",
-          description: "El documento ha sido generado y está pendiente de firma.",
+          title: "Documento generado exitosamente",
+          description: "El documento ha sido creado y está pendiente de firma.",
         })
-        router.push("/documents")
+
+        setTimeout(() => {
+          router.push("/documents")
+        }, 2000)
       } else {
         toast({
           title: "Error",
@@ -119,10 +121,6 @@ export default function NewDonation() {
                 <div className="space-y-2">
                   <Label htmlFor="donor-name">Nombre del Donante</Label>
                   <Input id="donor-name" placeholder="Nombre completo" required ref={donorNameRef} />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="donor-email">Correo Electrónico</Label>
-                  <Input id="donor-email" type="email" placeholder="correo@ejemplo.com" required ref={donorEmailRef} />
                 </div>
               </div>
 

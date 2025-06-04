@@ -891,3 +891,31 @@ INFO:root:Documento firmado correctamente.
 INFO:root:Convertido a PDF: SharePoint/Donaciones\temp_doc_600beeda-c4b4-4af8-9e42-3693a3945ede.pdf
 INFO:root:PDF firmado digitalmente
 INFO:root:Flujo de firmas actualizado para doc_id=600beeda-c4b4-4af8-9e42-3693a3945ede, user_id=24, rol=admin
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '6f0c6c25-da92-494a-b51b-afc1df828ea4', 'title': 'Donación especie donantes23', 'sharepoint_url': 'SharePoint/Donaciones/doc_6f0c6c25-da92-494a-b51b-afc1df828ea4.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_6f0c6c25-da92-494a-b51b-afc1df828ea4.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\temp_doc_6f0c6c25-da92-494a-b51b-afc1df828ea4.pdf
+INFO:root:PDF firmado digitalmente
+INFO:root:Flujo de firmas actualizado para doc_id=6f0c6c25-da92-494a-b51b-afc1df828ea4, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': '61c329bb-20fb-4df1-8837-5ea977275987', 'title': 'Donación dinero jesus', 'sharepoint_url': 'SharePoint/Donaciones/doc_61c329bb-20fb-4df1-8837-5ea977275987.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_61c329bb-20fb-4df1-8837-5ea977275987.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\temp_doc_61c329bb-20fb-4df1-8837-5ea977275987.pdf
+INFO:root:PDF firmado digitalmente
+INFO:root:Flujo de firmas actualizado para doc_id=61c329bb-20fb-4df1-8837-5ea977275987, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'c08592d9-c450-442b-8a0f-889bdc80e61e', 'title': 'Donación dinero asdad', 'sharepoint_url': 'SharePoint/Donaciones/doc_c08592d9-c450-442b-8a0f-889bdc80e61e.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_c08592d9-c450-442b-8a0f-889bdc80e61e.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\temp_doc_c08592d9-c450-442b-8a0f-889bdc80e61e.pdf
+INFO:root:PDF firmado digitalmente
+INFO:root:Flujo de firmas actualizado para doc_id=c08592d9-c450-442b-8a0f-889bdc80e61e, user_id=3, rol=reception
+INFO:root:Usuario encontrado: {'user_id': 3, 'name': 'Recepción', 'role': 'reception', 'email': 'recepcion@casamonarca.org'}
+INFO:root:Documento encontrado: {'doc_id': 'df72c700-81e8-40d4-b746-a7ab22a653ec', 'title': 'Donación dinero df72c700-81e8-40d4-b746-a7ab22a653ec', 'sharepoint_url': 'SharePoint/Donaciones/doc_df72c700-81e8-40d4-b746-a7ab22a653ec.docx'}
+INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_df72c700-81e8-40d4-b746-a7ab22a653ec.docx
+INFO:root:Documento firmado correctamente.
+INFO:root:Convertido a PDF: SharePoint/Donaciones\temp_doc_df72c700-81e8-40d4-b746-a7ab22a653ec.pdf
+INFO:root:PDF firmado digitalmente
+INFO:root:Flujo de firmas actualizado para doc_id=df72c700-81e8-40d4-b746-a7ab22a653ec, user_id=3, rol=reception

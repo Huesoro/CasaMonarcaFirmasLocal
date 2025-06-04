@@ -89,7 +89,7 @@ async def api_login(request: Request):
             conn.close()
 
 @app.get("/api/historial-donaciones")
-async def api_historial_donaciones():
+async def api_historial_donaciones(user_id: int, rol: str):
     documentos = get_all_documents()
     donaciones_dinero = get_all_donaciones_dinero()
     donaciones_insumos = get_all_donaciones_insumos()
@@ -117,31 +117,45 @@ async def api_historial_donaciones():
     
     historial = []
     for doc in documentos:
-        # Obtener el estado de firma actual
+        # Buscar el estado de firma para ese usuario/rol
         cursor_firmas.execute("""
-            SELECT status 
+            SELECT status, fecha_firma, orden, user_id 
             FROM firmas_documento 
-            WHERE doc_id = ? 
-            ORDER BY orden DESC LIMIT 1
-        """, (doc["doc_id"],))
-        firma_status = cursor_firmas.fetchone()
-        
-        tipo = "money" if doc["Type"] == "dinero" else "supplies"
-        donacion = dinero_por_doc.get(doc["doc_id"]) if tipo == "money" else insumos_por_doc.get(doc["doc_id"]) 
-        
+            WHERE doc_id = ? AND role = ?
+            ORDER BY orden
+        """, (doc["doc_id"], rol))
+        firma_info = cursor_firmas.fetchone()
+        firma_status = firma_info[0] if firma_info else "pendiente"
+        fecha_firma = firma_info[1] if firma_info else None
+        orden = firma_info[2] if firma_info else None
+        user_firma_id = firma_info[3] if firma_info else None
+
+        tipo = doc["Type"]
+        donacion = dinero_por_doc.get(doc["doc_id"]) if tipo == "dinero" else insumos_por_doc.get(doc["doc_id"]) 
+
+        # Obtener nombre del creador
+        creador_nombre = usuarios.get(doc["user_id"], "Desconocido")
+
         historial.append({
-            "id": f"don-{doc['doc_id']}",
+            "doc_id": doc["doc_id"],
             "title": doc["title"],
-            "type": tipo,
-            "date": doc["created_at"],
-            "status": firma_status[0] if firma_status else "pendiente",  # Usar el estado real de firma
-            "amount": donacion["amount"] if tipo == "money" and donacion else None,
-            "items": donacion["objeto"] if tipo == "supplies" and donacion else None,
-            "donor": usuarios.get(doc["user_id"], "Desconocido")
+            "sharepoint_url": doc["sharepoint_url"],
+            "Type": doc["Type"],
+            "status": doc["status"],
+            "user_id": doc["user_id"],
+            "created_at": doc["created_at"],
+            "updated_at": doc["updated_at"],
+            "firma_status": firma_status,
+            "fecha_firma": fecha_firma,
+            "orden": orden,
+            "creador_nombre": creador_nombre,
+            # Extras para compatibilidad, aunque no siempre se usen:
+            "amount": donacion["amount"] if tipo == "dinero" and donacion else None,
+            "items": donacion["objeto"] if tipo == "especie" and donacion else None,
         })
     
     conn_firmas.close()
-    return {"donaciones": historial}
+    return {"documentos": historial}
 
 @app.post("/api/documentos/firmar")
 async def api_firmar_documento(request: Request):

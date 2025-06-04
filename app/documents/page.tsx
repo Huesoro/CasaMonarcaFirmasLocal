@@ -65,6 +65,9 @@ export default function Documents() {
   const [loadingFirmas, setLoadingFirmas] = useState(false)
   const [docContent, setDocContent] = useState<string>('');
   const [isLoadingDoc, setIsLoadingDoc] = useState(false);
+  const [orden, setOrden] = useState("fecha")
+
+
 
   // Cargar documentos según la pestaña
   const fetchDocuments = async (tab = activeTab) => {
@@ -72,60 +75,23 @@ export default function Documents() {
     try {
       let docs = []
       if (user) {
-        const res = await fetch(`http://localhost:8000/api/documentos/pendientes?user_id=${user.user_id}&rol=${user.role}`)
+        let endpoint = ''
+        if (tab === "pending") {
+          endpoint = `http://localhost:8000/api/documentos/pendientes?user_id=${user.user_id}&rol=${user.role}`
+        } else {
+          endpoint = `http://localhost:8000/api/historial-donaciones?user_id=${user.user_id}&rol=${user.role}`
+        }
+        const res = await fetch(endpoint)
         const data = await res.json()
         docs = data.documentos || []
-        
-        // Filtrar documentos según la pestaña activa
+
+        // Filtros según tab
         if (tab === "pending") {
-          docs = docs.filter(doc => doc.firma_status === "pendiente")
+          docs = docs.filter((doc: any) => doc.firma_status === "pendiente")
         } else if (tab === "signed") {
-          docs = docs.filter(doc => doc.firma_status === "firmado")
+          docs = docs.filter((doc: any) => doc.firma_status === "firmado")
         } else if (tab === "rejected") {
-          docs = docs.filter(doc => doc.firma_status === "rechazado")
-        } else if (tab === "all") {
-          // Para la pestaña "Todos", comportamiento según rol
-          if (user.role === "reception") {
-            // Recepción solo ve sus propios documentos
-            docs = docs.filter(doc => doc.user_id === user.user_id)
-          } else if (user.role === "finance") {
-            // Finanzas ve todos los documentos de tipo dinero
-            const resHistorial = await fetch("http://localhost:8000/api/historial-donaciones")
-            const dataHistorial = await resHistorial.json()
-            docs = (dataHistorial.donaciones || [])
-              .filter(doc => doc.type === "money")
-              .map(doc => ({
-                ...doc,
-                doc_id: doc.id.replace('don-', ''),
-                firma_status: doc.status,
-                Type: "dinero",
-                status: doc.status,
-                title: `Donación ${doc.Type === "dinero" ? "dinero" : "especie"} - ${doc.nombre_donante || "Donante desconocido"}`
-              }))
-          } else if (user.role === "inventory") {
-            // Inventario ve todos los documentos de tipo insumos
-            const resHistorial = await fetch("http://localhost:8000/api/historial-donaciones")
-            const dataHistorial = await resHistorial.json()
-            docs = (dataHistorial.donaciones || [])
-              .filter(doc => doc.type === "supplies")
-              .map(doc => ({
-                ...doc,
-                doc_id: doc.id.replace('don-', ''),
-                firma_status: doc.status,
-                title: `Donación ${doc.Type === "dinero" ? "dinero" : "especie"} - ${doc.nombre_donante || "Donante desconocido"}`
-              }))
-          } else if (user.role === "admin") {
-            // Admin ve todos los documentos
-            const resHistorial = await fetch("http://localhost:8000/api/historial-donaciones")
-            const dataHistorial = await resHistorial.json()
-            docs = (dataHistorial.donaciones || [])
-              .map(doc => ({
-                ...doc,
-                doc_id: doc.id.replace('don-', ''),
-                firma_status: doc.status,
-                title: `Donación ${doc.Type === "dinero" ? "dinero" : "especie"} - ${doc.nombre_donante || "Donante desconocido"}`
-              }))
-          }
+          docs = docs.filter((doc: any) => doc.firma_status === "rechazado")
         }
       }
       setDocuments(docs)
@@ -167,10 +133,7 @@ export default function Documents() {
     return <div>Cargando...</div>
   }
 
-  const filteredDocuments = documents.filter((doc) => {
-    // Ya no necesitamos filtrar aquí porque todo el filtrado se hace en fetchDocuments
-    return true
-  })
+  
 
   const handleSignDocument = async (doc: any) => {
     const password = prompt("Introduce tu contraseña de firma:")
@@ -286,11 +249,33 @@ export default function Documents() {
     }
   };
 
+  const filteredDocuments = documents.sort((a, b) => {
+    if (orden === "fecha") {
+      return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    } else {
+      return a.title.localeCompare(b.title)}
+  })
+
+
+
   return (
     <div className="container mx-auto px-4 py-10">
       <div className="mb-8">
         <h1 className="text-3xl font-bold">Documentos</h1>
         <p className="text-muted-foreground">Gestiona los documentos que requieren tu firma</p>
+      </div>
+
+      <div className="mb-4 flex items-center gap-4">Add commentMore actions
+        <label htmlFor="orden" className="text-sm font-medium">Ordenar por:</label>
+        <select
+          id="orden"
+          className="border rounded px-2 py-1"
+          value={orden}
+          onChange={(e) => setOrden(e.target.value)}
+        >
+          <option value="fecha">Fecha</option>
+          <option value="alfabetico">Nombre</option>
+        </select>
       </div>
 
       <Tabs defaultValue="pending" onValueChange={setActiveTab}>

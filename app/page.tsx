@@ -39,9 +39,9 @@ export default function Home() {
     <div className="container mx-auto px-4 py-10">
       <div className="flex flex-col items-center justify-center space-y-8 text-center">
         <div className="space-y-3">
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">Casa Monarca</h1>
+          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">Casa Monarca.</h1>
           <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
-            Plataforma para la gestión y documentación digital de donaciones
+            Ayuda humanitaria al migrante ABP
           </p>
         </div>
 
@@ -80,12 +80,6 @@ export default function Home() {
                       {loading ? "Ingresando..." : "Iniciar sesión"}
                     </Button>
                   </form>
-                  {/* Si quieres dejar el login de Microsoft como opción alternativa, puedes dejar el botón abajo */}
-                  {/* <div className="flex justify-center">
-                    <Button asChild size="lg">
-                      <Link href="/api/auth/login">Iniciar sesión con Microsoft</Link>
-                    </Button>
-                  </div> */}
                 </CardContent>
               </Card>
             </TabsContent>
@@ -97,9 +91,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p>
-                    Casa Monarca es una organización dedicada a proporcionar ayuda y recursos a quienes más lo
-                    necesitan. Nuestra plataforma digital permite gestionar de manera eficiente y transparente todas las
-                    donaciones recibidas y entregadas, asegurando un proceso documentado y firmado digitalmente.
+                  Somos una organización humanitaria que acoge, protege, promueve e integra a las personas migrantes, refugiadas, desplazadas y retornadas y defiende sus derechos humanos. Nuestras visión es dar una respuesta local a un problema global, una respuesta humana a una situación inhumana.
                   </p>
                 </CardContent>
               </Card>
