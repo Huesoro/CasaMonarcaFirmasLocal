@@ -682,7 +682,3 @@ INFO:root:Convertido a PDF: SharePoint/Donaciones\doc_20b0a996-1362-4ce2-90df-02
 INFO:root:Firmando digitalmente PDF: SharePoint/Donaciones\doc_20b0a996-1362-4ce2-90df-02efc73a9057_firmado.pdf
 INFO:root:PDF firmado digitalmente: SharePoint/Donaciones\doc_20b0a996-1362-4ce2-90df-02efc73a9057_firmado_digital.pdf
 INFO:root:Flujo de firmas actualizado para doc_id=20b0a996-1362-4ce2-90df-02efc73a9057, user_id=2, rol=finance
-INFO:root:Usuario encontrado: {'user_id': 1, 'name': 'Administrador', 'role': 'admin', 'email': 'admin@casamonarca.org'}
-INFO:root:Documento encontrado: {'doc_id': '20b0a996-1362-4ce2-90df-02efc73a9057', 'title': 'Donación dinero 20b0a996-1362-4ce2-90df-02efc73a9057', 'sharepoint_url': 'SharePoint/Donaciones/doc_20b0a996-1362-4ce2-90df-02efc73a9057.docx'}
-INFO:root:Archivo encontrado: SharePoint/Donaciones/doc_20b0a996-1362-4ce2-90df-02efc73a9057.docx
-INFO:root:Firma no encontrada: Firma no encontrada para admin@casamonarca.org

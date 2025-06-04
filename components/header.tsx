@@ -14,9 +14,12 @@ import {
 import { UserCircle, Menu, X } from "lucide-react"
 import { useState } from "react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { useRouter } from "next/navigation"
+
 
 export default function Header() {
   const { user, logout } = useAuth()
+  const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
 
   const navigation = [
@@ -73,7 +76,7 @@ export default function Header() {
                       <span className="text-xs text-muted-foreground capitalize">Rol: {user.role}</span>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={() => logout()}>Cerrar sesión</DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => { logout(); router.push("/") }}>Cerrar sesión</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
