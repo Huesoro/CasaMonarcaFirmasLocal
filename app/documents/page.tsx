@@ -99,7 +99,8 @@ export default function Documents() {
                 doc_id: doc.id.replace('don-', ''),
                 firma_status: doc.status,
                 Type: "dinero",
-                status: doc.status
+                status: doc.status,
+                title: `Donación ${doc.Type === "dinero" ? "dinero" : "especie"} - ${doc.nombre_donante || "Donante desconocido"}`
               }))
           } else if (user.role === "inventory") {
             // Inventario ve todos los documentos de tipo insumos
@@ -110,7 +111,8 @@ export default function Documents() {
               .map(doc => ({
                 ...doc,
                 doc_id: doc.id.replace('don-', ''),
-                firma_status: doc.status
+                firma_status: doc.status,
+                title: `Donación ${doc.Type === "dinero" ? "dinero" : "especie"} - ${doc.nombre_donante || "Donante desconocido"}`
               }))
           } else if (user.role === "admin") {
             // Admin ve todos los documentos
@@ -120,7 +122,8 @@ export default function Documents() {
               .map(doc => ({
                 ...doc,
                 doc_id: doc.id.replace('don-', ''),
-                firma_status: doc.status
+                firma_status: doc.status,
+                title: `Donación ${doc.Type === "dinero" ? "dinero" : "especie"} - ${doc.nombre_donante || "Donante desconocido"}`
               }))
           }
         }

@@ -64,11 +64,14 @@ def crear_donacion(datos, user_id):
 
     # 3. Rellenar y guardar el documento
     path_docx = rellenar_campos_docx(path_machote, datos, id_documento)
+    
+    # Obtener el nombre del donante
+    nombre_donante = datos.get("nombre_donante") or datos.get("{nombre_donante}", "Desconocido")
 
     # 4. Registrar el documento en la base de datos
     doc_data = {
         "doc_id": id_documento,
-        "title": f"Donación {tipo_donacion} {id_documento}",
+        "title": f"Donación {tipo_donacion} {nombre_donante}",
         "sharepoint_url": path_docx,
         "Type": tipo_donacion,
         "status": "pending",
