@@ -8,7 +8,8 @@ import hashlib
 import sqlite3
 from Azure_SQL.conectBases import (
     get_all_documents, get_all_donaciones_dinero, get_all_donaciones_insumos,
-    insertar_flujo_firmas, get_documentos_para_firmar, firmar_documento
+    insertar_flujo_firmas, get_documentos_para_firmar, firmar_documento,
+    insert_user
 )
 import shutil
 import os
@@ -35,14 +36,9 @@ async def api_crear_donacion(request: Request):
     datos = data.get("datos")
     user_id = data.get("user_id")
     resultado = crear_donacion(datos, user_id)
-    # Determinar tipo de donación
-    if "{monto_donado}" in datos or "monto_donado" in datos:
-        tipo_donacion = "dinero"
-    elif "{lista_articulos}" in datos or "lista_articulos" in datos:
-        tipo_donacion = "especie"
-    else:
-        tipo_donacion = "desconocido"
-    # Insertar flujo de firmas si la donación fue creada correctamente
+    
+    tipo_donacion = "dinero" if "{monto_donado}" in datos or "monto_donado" in datos else "especie" if "{lista_articulos}" in datos or "lista_articulos" in datos else "desconocido"
+    
     if resultado.get("status") == "success":
         insertar_flujo_firmas(resultado["id_documento"], user_id, tipo_donacion)
     return resultado
@@ -54,8 +50,6 @@ async def api_crear_usuario(request: Request):
     nombre = data.get("nombre")
     password = data.get("password")
     role = data.get("role")
-    # Aquí deberías importar la función insert_user desde tu backend
-    from Azure_SQL.conectBases import insert_user
     crear_usuario(email, nombre, password, role, insert_user)
     return {"status": "success", "message": "Usuario creado correctamente"}
 
@@ -165,15 +159,13 @@ async def api_firmar_documento(request: Request):
         user_id = data.get("user_id")
         rol = data.get("role")
         password_firma = data.get("password_firma")
-        print("PASSWORD FIRMA:", password_firma)
+        
         if not password_firma:
             return {"status": "error", "message": "Se requiere la contraseña de firma"}
-        from logica_python.parafirmar.flujo_documentos import flujo_documento
+            
         resultado = await flujo_documento(user_id, doc_id, password_firma, rol=rol)
-        print("RESULTADO FLUJO:", resultado)
         return resultado
     except Exception as e:
-        # Loguea el error en la raíz del proyecto
         with open('log_firmas.txt', 'a', encoding='utf-8') as f:
             f.write(f"[{datetime.datetime.now()}] ERROR API: {e}\n")
         return {"status": "error", "message": f"Error inesperado en el API: {e}"}
@@ -205,7 +197,6 @@ async def api_documentos_pendientes(user_id: int, rol: str):
         return {"documentos": docs}
         
     except Exception as e:
-        print(f"Error en api_documentos_pendientes: {e}")
         return {"status": "error", "message": str(e)}
 
 @app.get("/api/documentos/firmas/{doc_id}")

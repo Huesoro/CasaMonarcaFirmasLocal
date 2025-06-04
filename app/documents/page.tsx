@@ -18,58 +18,42 @@ import { toast } from "@/components/ui/use-toast"
 import mammoth from 'mammoth';
 
 interface User {
-  id: string;
   user_id: string;
   role: string;
   name?: string;
   email?: string;
-  // ... otros campos que pueda tener el usuario
 }
 
 interface Document {
-  doc_id: string;
+  doc_id: string | number;
+  id?: string;
   title: string;
   sharepoint_url: string;
-  type: string;
+  Type: string;
   status: string;
-  user_id: string;
+  user_id: string | number;
   created_at: string;
   updated_at: string;
   firma_status: string;
-}
-
-// Define el tipo de documento según la base de datos
-interface Documento {
-  doc_id: number
-  title: string
-  sharepoint_url: string
-  Type: string
-  status: string
-  user_id: number
-  created_at: string
-  updated_at: string
-  firma_status: string
-  fecha_firma: string | null
-  creador_nombre: string
+  fecha_firma?: string | null;
+  creador_nombre: string;
+  date?: string;
 }
 
 export default function Documents() {
   const { user } = useAuth()
   const [activeTab, setActiveTab] = useState("pending")
-  const [selectedDocument, setSelectedDocument] = useState<any>(null)
+  const [selectedDocument, setSelectedDocument] = useState<Document | null>(null)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [isSigning, setIsSigning] = useState(false)
-  const [documents, setDocuments] = useState<any[]>([])
+  const [documents, setDocuments] = useState<Document[]>([])
   const [loading, setLoading] = useState(true)
   const [firmas, setFirmas] = useState<any[]>([])
   const [loadingFirmas, setLoadingFirmas] = useState(false)
-  const [docContent, setDocContent] = useState<string>('');
-  const [isLoadingDoc, setIsLoadingDoc] = useState(false);
+  const [docContent, setDocContent] = useState<string>('')
+  const [isLoadingDoc, setIsLoadingDoc] = useState(false)
   const [orden, setOrden] = useState("fecha")
 
-
-
-  // Cargar documentos según la pestaña
   const fetchDocuments = async (tab = activeTab) => {
     setLoading(true)
     try {
@@ -105,7 +89,6 @@ export default function Documents() {
 
   useEffect(() => {
     fetchDocuments(activeTab)
-    // eslint-disable-next-line
   }, [activeTab, user])
 
   // Cargar historial de firmas solo si es admin y hay documento seleccionado
@@ -123,11 +106,11 @@ export default function Documents() {
 
   useEffect(() => {
     if (selectedDocument) {
-      setIsLoadingDoc(true);
+      setIsLoadingDoc(true)
       loadDocumentContent(selectedDocument)
-        .finally(() => setIsLoadingDoc(false));
+        .finally(() => setIsLoadingDoc(false))
     }
-  }, [selectedDocument]);
+  }, [selectedDocument])
 
   if (!user) {
     return <div>Cargando...</div>
@@ -138,6 +121,7 @@ export default function Documents() {
   const handleSignDocument = async (doc: any) => {
     const password = prompt("Introduce tu contraseña de firma:")
     if (!password) return
+
     setIsSigning(true)
     try {
       const res = await fetch("http://localhost:8000/api/documentos/firmar", {
@@ -151,9 +135,10 @@ export default function Documents() {
         }),
       })
       const data = await res.json()
+      
       if (data.status === "success") {
         toast({ title: "Documento firmado", description: "El documento ha sido firmado exitosamente." })
-      setIsDialogOpen(false)
+        setIsDialogOpen(false)
         fetchDocuments(activeTab)
       } else {
         toast({ title: "Error", description: data.message || "No se pudo firmar el documento.", variant: "destructive" })
@@ -166,69 +151,56 @@ export default function Documents() {
   }
 
   const getStatusIcon = (status: string) => {
-    switch (status?.toLowerCase()) {
-      case "firmado":
-      case "signed":
-        return <CheckCircle className="h-5 w-5 text-green-500" />
-      case "pendiente":
-      case "pending":
-        return <Clock className="h-5 w-5 text-amber-500" />
-      case "rechazado":
-      case "rejected":
-        return <AlertCircle className="h-5 w-5 text-red-500" />
-      default:
-        return null
+    const statusMap = {
+      firmado: <CheckCircle className="h-5 w-5 text-green-500" />,
+      signed: <CheckCircle className="h-5 w-5 text-green-500" />,
+      pendiente: <Clock className="h-5 w-5 text-amber-500" />,
+      pending: <Clock className="h-5 w-5 text-amber-500" />,
+      rechazado: <AlertCircle className="h-5 w-5 text-red-500" />,
+      rejected: <AlertCircle className="h-5 w-5 text-red-500" />
     }
+    return statusMap[status?.toLowerCase() as keyof typeof statusMap] || null
   }
 
   const getStatusText = (status: string) => {
-    switch (status?.toLowerCase()) {
-      case "firmado":
-      case "signed":
-        return "Firmado"
-      case "pendiente":
-      case "pending":
-        return "Pendiente"
-      case "rechazado":
-      case "rejected":
-        return "Rechazado"
-      default:
-        return status
+    const statusMap = {
+      firmado: "Firmado",
+      signed: "Firmado",
+      pendiente: "Pendiente",
+      pending: "Pendiente",
+      rechazado: "Rechazado",
+      rejected: "Rechazado"
     }
+    return statusMap[status?.toLowerCase() as keyof typeof statusMap] || status
   }
 
   const loadDocumentContent = async (doc: any) => {
     try {
-      const documentId = doc.doc_id || doc.id;
-      const fileType = doc.sharepoint_url.toLowerCase().split('.').pop();
+      const documentId = doc.doc_id || doc.id
+      const fileType = doc.sharepoint_url.toLowerCase().split('.').pop()
+      const useFirmado = doc.firma_status === "firmado" && fileType === "docx"
+      const url = `http://localhost:8000/api/documents/download/${documentId}${useFirmado ? '?firmado=true' : ''}`
       
-      // Determinar si debemos usar el archivo firmado
-      const useFirmado = doc.firma_status === "firmado" && fileType === "docx";
-      const url = `http://localhost:8000/api/documents/download/${documentId}${useFirmado ? '?firmado=true' : ''}`;
-      
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`Error al descargar el documento: ${response.statusText}`);
-      }
+      const response = await fetch(url)
+      if (!response.ok) throw new Error(`Error al descargar el documento: ${response.statusText}`)
 
-      const blob = await response.blob();
+      const blob = await response.blob()
       
       if (fileType === 'pdf') {
-        const url = URL.createObjectURL(blob);
-        setDocContent(url);
+        setDocContent(URL.createObjectURL(blob))
       } else if (fileType === 'docx') {
         try {
-          const arrayBuffer = await blob.arrayBuffer();
-          const result = await mammoth.convertToHtml({ arrayBuffer });
-          setDocContent(result.value);
+          const arrayBuffer = await blob.arrayBuffer()
+          const result = await mammoth.convertToHtml({ arrayBuffer })
+          setDocContent(result.value)
         } catch (mammothError) {
-          console.error('Error al convertir DOCX:', mammothError);
+          console.error('Error al convertir DOCX:', mammothError)
           setDocContent(`
             <div class="p-4 text-center">
               <p class="text-red-500 mb-4">No se pudo previsualizar el documento DOCX.</p>
               <p class="text-sm text-gray-500">Por favor, descarga el documento para verlo.</p>
             </div>
-          `);
+          `)
         }
       } else {
         setDocContent(`
@@ -236,18 +208,18 @@ export default function Documents() {
             <p class="text-gray-500">Este tipo de archivo no se puede previsualizar.</p>
             <p class="text-sm text-gray-500">Por favor, descarga el documento para verlo.</p>
           </div>
-        `);
+        `)
       }
     } catch (error) {
-      console.error('Error al cargar el documento:', error);
+      console.error('Error al cargar el documento:', error)
       setDocContent(`
         <div class="p-4 text-center">
           <p class="text-red-500 mb-4">Error al cargar el documento.</p>
           <p class="text-sm text-gray-500">Por favor, intenta descargarlo.</p>
         </div>
-      `);
+      `)
     }
-  };
+  }
 
   const filteredDocuments = documents.sort((a, b) => {
     if (orden === "fecha") {
@@ -265,7 +237,7 @@ export default function Documents() {
         <p className="text-muted-foreground">Gestiona los documentos que requieren tu firma</p>
       </div>
 
-      <div className="mb-4 flex items-center gap-4">Add commentMore actions
+      <div className="mb-4 flex items-center gap-4">
         <label htmlFor="orden" className="text-sm font-medium">Ordenar por:</label>
         <select
           id="orden"
@@ -352,7 +324,6 @@ export default function Documents() {
         </TabsContent>
       </Tabs>
 
-      {/* Document Preview Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="max-w-3xl">
           {selectedDocument && (
@@ -374,7 +345,7 @@ export default function Documents() {
                   </div>
                 ) : (
                   (() => {
-                    const fileType = selectedDocument.sharepoint_url.toLowerCase().split('.').pop();
+                    const fileType = selectedDocument.sharepoint_url.toLowerCase().split('.').pop()
                     
                     if (fileType === 'pdf') {
                       return (
@@ -385,21 +356,21 @@ export default function Documents() {
                           height="500px"
                           style={{ border: 'none' }}
                         />
-                      );
+                      )
                     } else if (fileType === 'docx') {
                       return (
                         <div 
                           className="prose max-w-none"
                           dangerouslySetInnerHTML={{ __html: docContent }}
                         />
-                      );
+                      )
                     } else {
                       return (
                         <div className="p-4 text-center">
                           <p className="text-gray-500">Este tipo de archivo no se puede previsualizar.</p>
                           <p className="text-sm text-gray-500">Por favor, descarga el documento para verlo.</p>
                         </div>
-                      );
+                      )
                     }
                   })()
                 )}
@@ -411,11 +382,11 @@ export default function Documents() {
                   className="flex items-center gap-2"
                   onClick={() => {
                     if (selectedDocument) {
-                      const documentId = selectedDocument.doc_id || selectedDocument.id;
-                      const fileType = selectedDocument.sharepoint_url.toLowerCase().split('.').pop();
-                      const useFirmado = selectedDocument.firma_status === "firmado" && fileType === "docx";
-                      const url = `http://localhost:8000/api/documents/download/${documentId}${useFirmado ? '?firmado=true' : ''}`;
-                      window.open(url, "_blank");
+                      const documentId = selectedDocument.doc_id || selectedDocument.id
+                      const fileType = selectedDocument.sharepoint_url.toLowerCase().split('.').pop()
+                      const useFirmado = selectedDocument.firma_status === "firmado" && fileType === "docx"
+                      const url = `http://localhost:8000/api/documents/download/${documentId}${useFirmado ? '?firmado=true' : ''}`
+                      window.open(url, "_blank")
                     }
                   }}
                 >

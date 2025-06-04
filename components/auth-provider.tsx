@@ -61,7 +61,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!isLoading) {
       // Public routes
-      const publicRoutes = ["/", "/api/auth/login", "/api/auth/callback"]
+      const publicRoutes = ["/", "/api/auth/login"]
       const isPublicRoute = publicRoutes.some((route) => pathname.startsWith(route))
 
       if (!user && !isPublicRoute) {
