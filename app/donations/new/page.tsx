@@ -60,7 +60,6 @@ export default function NewDonation() {
         datos["{monto_donado}"] = amountRef.current?.value
       } else {
         datos["{lista_articulos}"] = suppliesDescriptionRef.current?.value
-        datos["cantidad"] = quantityRef.current?.value
       }
       const user_id = user?.user_id || 1
       const res = await fetch("http://localhost:8000/api/crear-donacion", {
@@ -154,12 +153,7 @@ export default function NewDonation() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                    <div className="space-y-2">
-                      <Label htmlFor="quantity">Cantidad</Label>
-                      <Input id="quantity" type="number" min="1" placeholder="1" required ref={quantityRef} />
-                    </div>
-                  </div>
+                  
                 </TabsContent>
               )}
             </CardContent>
