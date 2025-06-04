@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { AuthProvider } from "@/hooks/use-auth"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import { Toaster } from "@/components/ui/toaster" // <-- ✅ IMPORTANTE
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -11,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "Casa Monarca",
   description: "Plataforma para gestión de donaciones y procesos",
-    generator: 'v0.dev'
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -28,6 +29,7 @@ export default function RootLayout({
               <Header />
               <main className="flex-1">{children}</main>
               <Footer />
+              <Toaster /> 
             </div>
           </AuthProvider>
         </ThemeProvider>
@@ -35,3 +37,4 @@ export default function RootLayout({
     </html>
   )
 }
+
