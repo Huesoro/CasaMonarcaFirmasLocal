@@ -1,0 +1,43 @@
+Usuarios de prueba para Casa Monarca
+====================================
+
+admin@casamonarca.org
+  Contraseña: admin123
+  Rol: admin
+  - Administrador general, acceso total a la plataforma.
+
+finanzas@casamonarca.org
+  Contraseña: finanzas123
+  Rol: finance
+  - Empleado de finanzas, solo ve y firma documentos de dinero.
+
+recepcion@casamonarca.org
+  Contraseña: recepcion123
+  Rol: reception
+  - Encargado de recepción, registra donaciones.
+
+legal@casamonarca.org
+  Contraseña: legal123
+  Rol: legal
+  - Área legal, supervisa validez de firmas y documentos.
+
+inventario@casamonarca.org
+  Contraseña: inventario123
+  Rol: inventory
+  - Área de inventario, solo ve y firma documentos de insumos.
+
+Notas:
+- Los roles deben coincidir exactamente con los usados en los filtros y protecciones de la app.
+- Puedes usar estos usuarios para probar login, filtros y flujos completos. 
+
+yisusAdmin@hotmail.com
+jesusadmin
+rol = admin
+
+yisusFinanzas@hotmail.com
+jesusfinanzas
+rol = finanzas
+
+yisusInventario@hotmail.com
+jesusinventario
+rol = inventario

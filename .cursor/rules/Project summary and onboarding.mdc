@@ -1,0 +1,31 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+La primera versión de la plataforma incluirá las funciones esenciales para registrar y validar donaciones en insumos o dinero. El personal de Casa Monarca podrá iniciar sesión con su correo. Una vez iniciada sesión, si está en el grupo de usuarios que pueden registrar donaciones, deberán de tener la pestaña donde aparece el formulario para rellenar donaciones, donde deberá completar un formulario con los datos de la entrega y generar automáticamente un documento digital. Este documento será validado mediante una firma digital sencilla.  Se espera que el usuario rellene, elija si fue una donación de dinero o de insumos y partir de ahí rellene los datos, para generar un docx que después firmará. Además, la plataforma será totalmente funcional en dispositivos móviles.Si la persona forma parte del grupo que tiene que firmar procesos, deberá tener la pestaña de firmar documentos, los documentos deberán mostrarse en vista de galería con un preview de lo que dice el documento, estos documentos deberán estar en una carpeta. Si le da clic a un objeto de la galería debe poder leer el documento completo, con los botones de descargar o firmar. También se integrará un módulo para consultar el historial de donaciones, y funciones como gestión avanzada de usuarios, edición de documentos generados para los administradores. 
+
+Ejecutivos: Tendrán acceso exclusivo a la visualización de reportes sobre el flujo de donaciones y firmas, asegurando un monitoreo estratégico sin capacidad de edición. Asi como a la generacion de nuevos usuarios
+Empleados de finanzas: Gestionarán la creación y firma de documentos relacionados a donaciones en dinero, garantizando la trazabilidad y autenticidad de cada registro de donación.
+
+Encargados de recepción: Serán responsables de ingresar datos clave sobre cada donación, registrando su tipo, fecha, cantidad, origen y destinatario dentro del refugio.
+
+Área legal: Supervisará la validez de las firmas y documentos antes de su aprobación, asegurando el cumplimiento de normativas y requisitos legales.
+
+Área de inventario: Valida que le hayan entregado los insumos y firma de recibido en las donaciones de insumos
+
+Firmantes múltiples: Para ciertos documentos, será necesaria la firma de más de un responsable antes de validar la transacción, asegurando un nivel adicional de revisión y control.
+
+
+
+Main Flows:
+
+Encargados de recepción se logean → quieren registrar una donación → rellenan el formulario necesario → lo firman
+
+
+Área de inventario se logea → revisa en su vista cuales documentos estan pendientes → lo leen y lo firman
+
+
+
+
+Ve [MainFlows.drawio.png](mdc:MainFlows.drawio.png) para detalles de los flows. Ve [Paginas.drawio.png](mdc:Paginas.drawio.png) para tener una idea de como podria funcionar cada página, estoy abierto a recomedanciones 

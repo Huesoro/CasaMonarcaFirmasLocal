@@ -1,0 +1,15 @@
+MOCK DATA GENERADA:
+
+Donación especie pendiente: {'{fecha_donacion}': '2025-05-25 15:28:11', '{nombre_donante}': 'Fundación Ayuda', '{lista_articulos}': 'Alimentos no perecederos, cobijas, kits de higiene'} (doc_id 5916d1d8-d4e0-4a8b-b153-87c53aaec8ca)
+Donación dinero firmada: {'{fecha_donacion}': '2025-05-25 15:28:11', '{nombre_donante}': 'Empresa XYZ', '{monto_donado}': 10500} (doc_id b6ae6414-f7a9-421c-8536-95a532f0df5b)
+Donación especie firmada solo por inventario: {'{fecha_donacion}': '2025-05-25 15:28:11', '{nombre_donante}': 'Farmacia ABC', '{lista_articulos}': 'Medicamentos varios'} (doc_id 9e1c9d81-cb3c-4109-816f-9ece23f864a5)
+Donación dinero pendiente: {'{fecha_donacion}': '2025-05-25 15:28:11', '{nombre_donante}': 'Donante Anónimo', '{monto_donado}': 11000} (doc_id 20b0a996-1362-4ce2-90df-02efc73a9057)
+Usuario: Sofía García (sofia.garcia@casamonarca.org) - Rol: admin
+Usuario: Carlos Méndez (carlos.mendez@casamonarca.org) - Rol: finance
+Usuario: Lucía Pérez (lucia.perez@casamonarca.org) - Rol: reception
+Usuario: Juan Ríos (juan.rios@casamonarca.org) - Rol: legal
+Usuario: Mariana López (mariana.lopez@casamonarca.org) - Rol: inventory
+Donación especie: {'{fecha_donacion}': '2025-05-25 15:28:11', '{nombre_donante}': 'Grupo Voluntario Monterrey', '{lista_articulos}': 'Ropa de abrigo, zapatos, mochilas'} (doc_id 341a23ff-1676-4a20-beeb-d8a370272856)
+Donación especie: {'{fecha_donacion}': '2025-05-25 15:28:11', '{nombre_donante}': 'Farmacia San Pablo', '{lista_articulos}': 'Medicamentos para gripe, termómetros'} (doc_id f2cde2de-803a-4a67-a970-1525550cdb81)
+Donación dinero: {'{fecha_donacion}': '2025-05-25 15:28:11', '{nombre_donante}': 'Empresa ABC S.A.', '{monto_donado}': 25000} (doc_id 656f99ea-b27b-47e8-91a1-8ff6d9409621)
+Donación dinero: {'{fecha_donacion}': '2025-05-25 15:28:11', '{nombre_donante}': 'Donador Privado', '{monto_donado}': 5000} (doc_id 57113409-dc8f-4734-981a-7f06367b8dfc)
